@@ -1,0 +1,16 @@
+back-end(Express.js)準備方法
+
+■ ワークスペースとして使用したいフォルダに移動
+cd vscode-workspace/nodejs-project
+
+■ ディレクトリ作成
+mkdir back-end
+
+■ package.json生成
+npm init -y
+
+■ Express.jsをインストール
+npm install express
+
+
+

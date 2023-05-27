@@ -1,0 +1,7 @@
+front-end(create-react-app)準備方法
+
+■ ワークスペースとして使用したいフォルダに移動
+cd vscode-workspace/nodejs-project
+
+■ React×typescriptプロジェクトの作成
+create-react-app front-end --template typescript

@@ -1,0 +1,26 @@
+npm使用方法
+
+■ package.jsonのインストールをまとめて実行
+npm install
+
+■ 任意のパッケージをインストール
+npm install パッケージ名 --save
+
+ 開発環境は基本的にsave-devのほうがいいかも
+
+npm install -g typescript create-react-app --save-dev
+
+
+■ デバック
+package.jsonに記載したコマンドが実行できる
+"start": "node scripts/start.js",
+"build": "node scripts/build.js",
+"test": "node scripts/test.js"
+
+開発時(これはcreate-react-appの時のみかも)
+npm run start
+→ VS codeのデバッグの方と連動しているかも
+
+本番時
+npm run build
+
