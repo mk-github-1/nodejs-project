@@ -1,0 +1,10 @@
+front-endサーバーとback-endサーバーを同時実行
+
+■ ルートプロジェクトに同時にコマンドを実行するためのパッケージをインストールする
+cd vscode-workspace/nodejs-project
+npm install --save-dev concurrently
+
+■ front-endサーバーとback-endサーバーを同時に実行
+cd vscode-workspace/nodejs-project
+npx concurrently "cd front-end && npm start" "cd back-end && npm run dev"
+

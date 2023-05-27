@@ -1,4 +1,7 @@
 # 除外設定
+/node_modules
+/package-lock.json
+
 /front-end/node_modules
 /front-end/package-lock.json
 
