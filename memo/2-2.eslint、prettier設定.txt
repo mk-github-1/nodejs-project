@@ -1,0 +1,60 @@
+ESLint + Prettierを導入したTypeScript開発環境
+https://zenn.dev/big_tanukiudon/articles/c1ab3dba7ba111
+
+
+ESLint 導入 ＆ 実行
+1. ESLint のインストール
+npm install --save-dev eslint
+
+2. npx eslint --initコマンドで、対話的に ESLint 構成を作成する
+npx eslint --initコマンドを実行し、ESLint の構成ファイルを作成しましょう。
+今回は以下の構成で作業を進めていきます。
+
+スタイルガイドを採用したいので、How would you like to use ESLint?はTo check syntax, find problems, and enforce code styleを選択。
+What type of modules does your project use?はJavaScript modules (import/export) を選択。
+Which framework does your project use?はNone of theseを選択。
+Does your project use TypeScript?はYesを選択。
+Where does your code run?はBrowserとNodeを選択。
+How would you like to define a style for your project?はUse a popular style guideを選択。
+Which style guide do you want to follow?はStandardを選択。
+What format do you want your config file to be in?はJavaScriptを選択。
+Would you like to install them now with npm?はYesを選択し、必要なモジュールをインストール。
+.eslintrc.jsが作成されます。
+
+3. 実行
+前述したindex.tsの状態でnpx eslint index.tsを実行します。
+色々とエラーが表示されると思います。
+
+Prettier 導入 ＆ 実行
+1. Prettier をインストール
+npm install --save-dev prettier eslint-config-prettier
+
+eslint-config-prettierは ESLint のコードフォーマットに関連するルールを無効化し、バグを検出するルールのみを有効にするプラグインです。
+
+2. .eslintrc.jsに Prettier の項目を追加する
+module.exports = {
+  /* 中略 */
+  extends: [
+    /* 中略 */
+    "prettier", // 追加。他の設定の上書きを行うために、必ず最後に配置する。
+  ],
+};
+
+3. 実行
+index.tsにて、文末のセミコロン等を消して、npx prettier --write index.tsを実行します。
+コードがフォーマットされます。
+
+VS Code の設定
+拡張機能のインストール
+ESLint(dbaeumer.vscode-eslint)と Prettier(esbenp.prettier-vscode) の拡張機能をインストールします。
+
+設定
+VS Code の.vscode/settings.jsonを作成し、ワークスペース用の設定ファイルを作成します。
+ファイルの保存時にフォーマットがかかるように設定を追加します。
+
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // フォーマッターをPrettierにする
+  "editor.formatOnSave": true // ファイル保存時にフォーマットを実行
+}
+
+ファイルのセーブ時にフォーマットが走ることを確認する。

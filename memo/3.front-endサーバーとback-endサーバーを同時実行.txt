@@ -8,3 +8,18 @@ npm install --save-dev concurrently
 cd vscode-workspace/nodejs-project
 npx concurrently "cd front-end && npm start" "cd back-end && npm run dev"
 
+この時点で動作するか確認する。動かなければ個別に確認する。
+
+■ VS Codeのデバッグメニューからlaunch.jsonのひな型を生成し、下記を追加する
+
+// * コマンド追加 ********** 
+"cwd": "${workspaceFolder}",
+"runtimeExecutable": "npx",
+"runtimeArgs": [
+  "concurrently",
+  "\"cd front-end && npm start\"",
+  "\"cd back-end && npm run dev\""
+],
+// *
+
+■ VS codeからデバッグ実行する

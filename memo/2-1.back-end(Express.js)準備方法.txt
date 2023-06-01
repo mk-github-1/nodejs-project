@@ -1,0 +1,70 @@
+back-end(Express.js)準備方法
+
+■ グローバルにexpress-generatorをインストール
+npm install -g express-generator
+
+? ○ npm install -g express-generator-typescript
+
+■ ワークスペースとして使用したいフォルダに移動
+cd vscode-workspace/nodejs-project
+
+■ expressジェネレーターでプロジェクトを生成、これはコマンドプロンプトで実行します。
+テンプレートは通常のhtmlに近いejsを指定。
+npx express --view=ejs back-end
+
+// ※この時点ではtypescriptになっていない
+
+? npx express-generator-typescript back-end
+
+
+■ concurrentlyをグローバルにインストール
+npm install -g concurrently
+
+
+■ フォルダに移動
+cd vscode-workspace/nodejs-project/back-end
+
+■ typescript, webpack, webpack-cli, webpack-dev-server, ts-loader, ts-node, nodemon(またはts-node-dev), 
+@types/node, @types/express, @types/debug を--save-devにインストール
+npm install --save-dev typescript webpack webpack-cli webpack-dev-server ts-loader ts-node nodemon @types/node @types/express @types/debug
+
+source-map-loader
+
+オプション
+npm install helmet cors @types/cors
+npm install --save-dev rimraf eslint prettier eslint-config-prettier
+
+helmet: セキュリティ、脆弱性対策？
+cors: CORSの利用と思われる
+rimraf: 出力ディレクトリを毎回削除
+eslint: コードフォーマット
+prettier eslint-config-prettier: バグ検出
+
+
+■ tsconfig.jsonを生成
+npx tsc --init
+
+設定はExpress.jsのものにする
+
+■ バックエンド専用なので不要なファイルを削除
+views/index.ejs
+
+app.js内のindexを参照している部分をコメントアウト
+
+■ エントリーポイントの/src/index.tsを作成する
+
+サンプル
+--
+import express from 'express';
+
+const app = express();
+const port = 5000;
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+--
