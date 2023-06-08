@@ -5,7 +5,7 @@ Web アプリケーションを作成するための自習用リポジトリで�
 
 ルートプロジェクト下のサブプロジェクトは次のコマンドで作成しています。
 
-フロントエンドプロジェクト: create-react-app front-end --template typescript
+フロントエンドプロジェクト: create-react-app front-end --template typescript  
 バックエンドプロジェクト : npx typeorm init --name back-end --database mysql --express
 
 ## アーキテクチャ検討中
