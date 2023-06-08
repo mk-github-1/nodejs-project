@@ -1,9 +1,11 @@
 import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
+import { Repository } from "typeorm";
 import { User } from "../domain-model/entity/User";
 
 export class UserController {
-    private userRepository = AppDataSource.getRepository(User);
+    // Repositoryを用意して、DIしなくてもこの方法でRepositoryを操作できるみたい
+    private userRepository: Repository<User> = AppDataSource.getRepository(User);
 
     async all(request: Request, response: Response, next: NextFunction) {
         return this.userRepository.find();
@@ -48,3 +50,4 @@ export class UserController {
         return "user has been removed";
     }
 }
+

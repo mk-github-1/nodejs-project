@@ -1,17 +1,6 @@
 import { time } from "console";
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    PrimaryColumn,
-    Long,
-    CreateDateColumn,
-    UpdateDateColumn,
-    VersionColumn,
-} from "typeorm";
 
-@Entity({ name: "m_role" })
-export class Role {
+export class RoleModel {
     public constructor(options?: {
         roleId?: string;
         roleName?: string;
@@ -30,24 +19,17 @@ export class Role {
         this.timestamp = options?.timestamp || 0;
     }
 
-    @PrimaryColumn({ length: 32 })
     public roleId: string;
 
-    @Column({ length: 256 })
     public roleName: string;
 
-    @Column()
     public sortOrder: number;
 
-    @Column()
     public isDeleted: boolean;
 
-    @CreateDateColumn()
     public createdAt: Date;
 
-    @UpdateDateColumn()
     public updatedAt: Date;
 
-    @VersionColumn()
     public timestamp: number;
 }
