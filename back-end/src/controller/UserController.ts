@@ -4,13 +4,14 @@ import { Repository } from "typeorm";
 import { User } from "../domain-model/entity/User";
 
 export class UserController {
-    // Repositoryを用意して、DIしなくてもこの方法でRepositoryを操作できるみたい
     private userRepository: Repository<User> = AppDataSource.getRepository(User);
 
+    // http://localhost:5000/users
     async all(request: Request, response: Response, next: NextFunction) {
         return this.userRepository.find();
     }
 
+    // http://localhost:5000/users/1
     async one(request: Request, response: Response, next: NextFunction) {
         const id = parseInt(request.params.id);
 
