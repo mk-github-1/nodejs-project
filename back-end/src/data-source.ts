@@ -1,19 +1,19 @@
 /*
- * TypeORMのマイグレーション用のTypeORM設定
+ * TypeORMのマイグレーション設定
  */
-import 'reflect-metadata';
 import { DataSource } from 'typeorm';
+import { sharedConfig } from './shared.config';
 
-export const AppDataSource = new DataSource({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '0000',
-    database: 'test_db',
-    synchronize: false,
-    logging: false,
-    entities: ['src/domain-model/entity/*.ts', 'src/domain-model/entity/**/*.ts'],
-    migrations: ['src/migrations/*.ts'],
-    subscribers: [],
+export const AppDataSource: DataSource = new DataSource({
+    type: sharedConfig.type,
+    host: sharedConfig.host,
+    port: sharedConfig.port,
+    username: sharedConfig.username,
+    password: sharedConfig.password,
+    database: sharedConfig.database,
+    synchronize: sharedConfig.synchronize,
+    logging: sharedConfig.logging,
+    entities: sharedConfig.entities,
+    migrations: sharedConfig.migrations,
+    subscribers: sharedConfig.subscribers,
 });

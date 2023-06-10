@@ -90,6 +90,6 @@ package-lock.json
 /back-end/temp/
 /back-end/package-lock.json
 /back-end/dist/
-/back-end/migrations/
+/back-end/src/migrations/
 
 
