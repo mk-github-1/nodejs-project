@@ -11,6 +11,7 @@ format:         prettierコマンドを使用して、指定されたパス内�
 start:          nest startコマンドを実行します。これは、Nest.jsアプリケーションを起動します。
 
 start:dev:      nest start --watchコマンドを実行します。
+                これは、開発モードでNest.jsアプリケーションを起動し、
                 ファイルの変更を監視して自動的に再起動します。
 
 start:debug:    nest start --debug --watchコマンドを実行します。
