@@ -1,12 +1,12 @@
-## Node.js(typescript, React, Express.js, TypeORM)の自習用リポジトリ
+## Node.js(React × Rest.js with TypeScript)の自習用リポジトリの自習用リポジトリ
 
-Node.js で、typescript, React, Express.js の  
-Web アプリケーションを作成するための自習用リポジトリです。
+Node.js で、React × Rest.jsプロジェクトのWeb アプリケーションを作成するための自習用リポジトリです。
+TypeScriptで書いています。TypeORMも使用できます。
 
-ルートプロジェクト下のサブプロジェクトは次のコマンドで作成しています。
+ルートプロジェクト下のサブプロジェクトはcliをインストールしてから、コマンドプロンプトで下記を実行し、作成しています。
 
 フロントエンドプロジェクト: create-react-app front-end --template typescript  
-バックエンドプロジェクト : npx typeorm init --name back-end --database mysql --express
+バックエンドプロジェクト : nest new back-end
 
 ## アーキテクチャ検討中
 
