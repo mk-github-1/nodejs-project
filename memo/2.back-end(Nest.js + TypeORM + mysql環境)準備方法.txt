@@ -1,14 +1,13 @@
 back-end(Nest.js + TypeORM + mysql環境)の準備方法
 
 ■ グローバルにtypeormをインストール
-npm install -g typeorm
+npm install -g @nestjs/cli
 
 ■ フォルダに移動
 cd vscode-workspace/nodejs-project
 
-■ back-endプロジェクトの自動生成
-これをすることでtypeorm + express.js + mysqlのプロジェクトを自動生成できる
-npx typeorm init --name back-end --database mysql --express
+■ back-endプロジェクトの自生成
+nest new back-end
 
 ■ 依存関係のmysqlを修正する
 依存関係のmysqlはmysql Version8に対応していないのでそのままでは動作しない、mysql2に変更が必要
@@ -22,7 +21,7 @@ src/shared.config.ts    ... 共用するデータベース設定(開発用)
 src/database.config.ts  ... Rest.jsのTypeORM設定
 src/data-source.ts      ... TypeORMのマイグレーション設定
 
-■ TypeORM用のpackage.jsonのscript設定
+■ package.jsonのscript設定
 (このコマンドを設定)
 "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
 
