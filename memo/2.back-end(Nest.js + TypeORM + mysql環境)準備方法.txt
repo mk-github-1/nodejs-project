@@ -17,28 +17,17 @@ cd back-end
 ①npm uninstall mysql
 ②npm install mysql2
 
-■ src/database.config.tsの設定を変更する
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-
-export const databaseConfig: TypeOrmModuleOptions = {
-  type: 'mysql',
-  host: 'localhost',
-  port: 3306,
-  username: 'root',
-  password: '0000',
-  database: 'test_db',
-  synchronize: false, // 開発時 true or 本番時 false
-  logging: false,
-  // entities: [User],
-  entities: ['src/domain-model/entity/*.ts', 'src/domain-model/entity/**/*.ts'],
-  migrations: ['src/migrations/*.ts'],
-  subscribers: [],
-};
-
+■ TypeORM用のデータベース設定を用意する
+src/shared.config.ts    ... 共用するデータベース設定(開発用)
+src/database.config.ts  ... Rest.jsのTypeORM設定
+src/data-source.ts      ... TypeORMのマイグレーション設定
 
 ■ TypeORM用のpackage.jsonのscript設定
-"typeorm": "typeorm-ts-node-commonjs"
+(このコマンドを設定)
 "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+
+(メモ、この方法もある)
+"typeorm": "typeorm-ts-node-commonjs"
 
 ■ .eslintrc.jsにprettier/prettierの改行ルールを追加
 これをしないとエラーがでる
