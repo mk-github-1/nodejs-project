@@ -1,0 +1,31 @@
+TypeORMのよく使うmigrationコマンド
+
+
+1. DB定義のファイル(新規 or 差分)を作成
+
+(公式手順) typeorm migration:generate -d <path/to/datasource> path/to/migrations/<migration-name>
+
+→ (訂正)
+npm run typeorm migration:generate -- --dataSource src/data-source.ts src/migrations/InitialSchema
+
+※ネット記事にあるような --pretty src/migrations/InitialSchemaはなくても同じ動作をする
+
+
+
+2. migrationを実行(DBテーブルに反映)　※指定なしだと最新のマイグレーションファイルが指定されるっぽい
+
+(公式手順) typeorm migration:run -- -d path-to-datasource-config
+
+→ (訂正) npm run typeorm migration:run -- --dataSource src/data-source.ts
+
+
+
+3. 差分を更新したい時、再度1.2を実行
+
+
+
+4. 戻す手順？
+
+(公式手順) typeorm migration:run --fake
+
+→ (訂正) npm run typeorm migration:run --fake -- --dataSource src/data-source.ts

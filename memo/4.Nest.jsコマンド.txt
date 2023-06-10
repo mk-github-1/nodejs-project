@@ -1,0 +1,42 @@
+Nest.jsコマンド
+
+build:          nest buildコマンドを実行します。
+                これは、Nest.jsフレームワークのプロジェクトをビルドして、
+                アプリケーションのコンパイル済みバージョンを生成します。
+
+format:         prettierコマンドを使用して、指定されたパス内のTypeScriptファイルのフォーマットを行います。
+                prettierはコードの整形を行うツールで、
+                このスクリプトは指定されたパス内のファイルを対象に整形を行います。
+
+start:          nest startコマンドを実行します。これは、Nest.jsアプリケーションを起動します。
+
+start:dev:      nest start --watchコマンドを実行します。
+                ファイルの変更を監視して自動的に再起動します。
+
+start:debug:    nest start --debug --watchコマンドを実行します。
+                これは、デバッグモードでNest.jsアプリケーションを起動し、
+                ファイルの変更を監視して自動的に再起動します。
+
+start:prod:     node dist/mainコマンドを実行します。
+                これは、プロダクションモードでビルド済みのNest.jsアプリケーションを起動します。
+
+lint:           eslintコマンドを実行します。
+                これは、指定されたパス内のTypeScriptファイルに対して静的解析を行い、
+                コーディングスタイルやバグの潜在的な問題をチェックします。
+
+test:           jestコマンドを実行します。
+                これは、テストランナーとして知られるJestを使用して、プロジェクトのテストを実行します。
+
+test:watch:     jest --watchコマンドを実行します。
+                これは、Jestをウォッチモードで起動し、ファイルの変更を監視して自動的にテストを再実行します。
+
+test:cov:       jest --coverageコマンドを実行します。
+                これは、Jestをカバレッジモードで起動し、テストのカバレッジレポートを生成します。
+
+test:debug:     デバッグモードでJestを実行します。
+                node --inspect-brk -r tsconfig-paths/register -r ts-node/registerコマンドを使用して
+                デバッグセッションを開始し、jestコマンドを実行します。
+
+test:e2e:       jest --config ./test/jest-e2e.jsonコマンドを実行します。
+                これは、E2E（End-to-End）テスト用のJestの設定ファイルを指定して、
+                E2Eテストを実行します。

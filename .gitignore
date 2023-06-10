@@ -1,25 +1,95 @@
-# 除外設定
-.idea/
-.vscode/
+# Front end(React) ##################################################
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# Back end(Rest.js) ##################################################
+
+# compiled output
+/dist
+/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# 共通 ##################################################
+
+# .idea/
+# .vscode/
 node_modules/
 build/
 tmp/
 temp/
 package-lock.json
 
-/front-end/.idea/
-/front-end/.vscode/
+# /front-end/.idea/
+# /front-end/.vscode/
 /front-end/node_modules
 /front-end/build/
 /front-end/tmp/
 /front-end/temp/
 /front-end/package-lock.json
+/front-end/dist/
 
-/back-end/.idea/
-/back-end/.vscode/
+# /back-end/.idea/
+# /back-end/.vscode/
 /back-end/node_modules
 /back-end/build/
 /back-end/tmp/
 /back-end/temp/
 /back-end/package-lock.json
+/back-end/dist/
+/back-end/migrations/
+
 
