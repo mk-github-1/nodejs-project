@@ -23,17 +23,11 @@ nodejs-project
 
 -   back-end
 
-    -   api
+    -   Rest.js では controller から service まで機能単位になるかもしれない
 
-        -   controller
-        -   authorize
+    -   infrastructure ※検討中、Rest.js で Repository をデフォルトで利用できるかもしれない
 
-    -   infrastructure
-
-        -   in-memory-impl
-        -   repository-impl
-
-    -   application-service ※トランザクション単位でもある
+    -   application-service ※検討中
 
         -   use-case
         -   use-case-impl
@@ -46,18 +40,11 @@ nodejs-project
         -   repository
         -   utility
 
-    -   domain-model
+    -   domain-model ※dto は廃止検討中
 
         -   constant
         -   entity
         -   model
         -   resource
-        -   ※dto を使用しない設計にする予定
 
     -   test
-        -   api/controller
-        -   api/authorize
-        -   application-service/service
-        -   domain-service/domain-service
-        -   domain-service/in-memory
-        -   domain-service/repository

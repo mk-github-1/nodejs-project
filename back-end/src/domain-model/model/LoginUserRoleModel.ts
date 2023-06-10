@@ -2,43 +2,44 @@ import { LoginUserModel } from './LoginUserModel';
 import { RoleModel } from './RoleModel';
 
 export class LoginUserRoleModel {
-  public constructor(options?: {
-    account?: string;
-    roleId?: string;
-    sortOrder?: number;
-    isDeleted?: boolean;
-    createdAt?: Date;
-    updatedAt?: Date;
-    timestamp?: number;
-    loginUserModel?: LoginUserModel;
-    roleModel?: RoleModel;
-  }) {
-    this.account = options?.account || '';
-    this.roleId = options?.roleId || '';
-    this.sortOrder = options?.sortOrder || 0;
-    this.isDeleted = options?.isDeleted || false;
-    this.createdAt = options?.createdAt || new Date();
-    this.updatedAt = options?.updatedAt || new Date();
-    this.timestamp = options?.timestamp || 0;
-    this.loginUserModel = options?.loginUserModel || new LoginUserModel();
-    this.roleModel = options?.roleModel || new RoleModel();
-  }
+    public constructor(options?: {
+        account?: string;
+        roleId?: string;
+        sortOrder?: number;
+        isDeleted?: boolean;
+        createdAt?: Date;
+        updatedAt?: Date;
+        timestamp?: number;
+        loginUserModel?: LoginUserModel;
+        roleModel?: RoleModel;
+    }) {
+        this.account = options?.account || '';
+        this.roleId = options?.roleId || '';
+        this.sortOrder = options?.sortOrder || 0;
+        this.isDeleted = options?.isDeleted || false;
+        this.createdAt = options?.createdAt || new Date();
+        this.updatedAt = options?.updatedAt || new Date();
+        this.timestamp = options?.timestamp || 0;
+        this.loginUserModel = options?.loginUserModel || new LoginUserModel();
+        this.roleModel = options?.roleModel || new RoleModel();
+    }
 
-  public account: string;
+    public account: string;
 
-  public roleId: string;
+    public roleId: string;
 
-  public sortOrder: number;
+    public sortOrder: number;
 
-  public isDeleted: boolean;
+    public isDeleted: boolean;
 
-  public createdAt: Date;
+    public createdAt: Date;
 
-  public updatedAt: Date;
+    public updatedAt: Date;
 
-  public timestamp: number;
+    public timestamp: number;
 
-  public loginUserModel: LoginUserModel;
+    public loginUserModel: LoginUserModel;
 
-  public roleModel: RoleModel;
+    public roleModel: RoleModel;
 }
+
