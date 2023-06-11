@@ -24,28 +24,24 @@ nodejs-project
 -   back-end
 
     -   modules
-        - (例)login.user.controller.ts
-        - (例)login.user.service.ts
-        - (例)login.user.module.ts
+        - (例)login-user  
+            - (例)login.user.controller.ts
+            - (例)login.user.service.ts
+            - (例)login.user.module.ts
 
     -   providers
-        -   infrastructure
-
-        -   application-service ※検討中
-
-        -   use-case
-        -   use-case-impl
+        - infrastructure
+            -   in-memory-impl
+            -   repository-impl
 
     -   domain-service
-
-        -   service
-        -   service-impl
+        -   domain-service
+        -   domain-service-impl
         -   in-memory
         -   repository
         -   utility
 
     -   domain-model ※dto は廃止検討中
-
         -   constant
         -   entity
         -   model
