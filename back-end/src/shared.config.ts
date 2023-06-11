@@ -16,7 +16,7 @@ export const sharedConfig: {
     logging: boolean;
     entities: string[];
     migrations: string[];
-    subscribers: string[]; // any[] ?
+    subscribers: any[];
 } = {
     type: 'mysql',
     host: 'localhost',
