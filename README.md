@@ -23,11 +23,15 @@ nodejs-project
 
 -   back-end
 
-    -   Rest.js では controller から service まで機能単位になるかもしれない
+    -   modules
+        - (例)login.user.controller.ts
+        - (例)login.user.service.ts
+        - (例)login.user.module.ts
 
-    -   infrastructure ※検討中、Rest.js で Repository をデフォルトで利用できるかもしれない
+    -   providers
+        -   infrastructure
 
-    -   application-service ※検討中
+        -   application-service ※検討中
 
         -   use-case
         -   use-case-impl
