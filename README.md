@@ -21,11 +21,11 @@ nodejs-project
         - test
 
     - back-end
-        - modules
-            - (例)login-user  
-            - (例)login.user.controller.ts
-            - (例)login.user.service.ts
-            - (例)login.user.module.ts
+        - modules (例)       
+            - login-user  
+                - login.user.controller.ts
+                - login.user.service.ts
+                - login.user.module.ts
 
         - providers
             - infrastructure
