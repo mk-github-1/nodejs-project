@@ -22,7 +22,6 @@ nodejs-project
 
     - back-end
         - modules ※例、ここはモジュール単位でフォルダを作成します。
-       
             - login-user  
                 - loginUser.controller.ts
                 - loginUser.service.ts
