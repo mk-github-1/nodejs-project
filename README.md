@@ -10,7 +10,7 @@ TypeScriptで書いています。TypeORMも使用できます。
 
 ## アーキテクチャ検討中
 
-こんな感じのイメージにしようと考えている。Excel でまとめる
+アーキテクチャのイメージ。Excel でまとめる
 
 ```
 nodejs-project
@@ -23,9 +23,9 @@ nodejs-project
     - back-end
         - modules (例)       
             - login-user  
-                - login.user.controller.ts
-                - login.user.service.ts
-                - login.user.module.ts
+                - loginUser.controller.ts
+                - loginUser.service.ts
+                - loginUser.module.ts
 
         - providers
             - infrastructure
