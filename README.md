@@ -15,9 +15,11 @@ TypeScriptで書いています。TypeORMも使用できます。
 ```
 nodejs-project
     - front-end
+        - components
+            - model
+        - containers
         - pages
-        - front-end-model
-        - utility
+        - utils
         - test
 
     - back-end
@@ -39,8 +41,9 @@ nodejs-project
                 - repository
                 - utility
 
-            - domain-model ※dto は廃止検討中
+            - domain-model
                 - constant
+                - dto
                 - entity
                 - model
                 - resource
