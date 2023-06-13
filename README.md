@@ -23,36 +23,36 @@ nodejs-project
         - test
 
     - back-end
-        - modules ※例、ここはモジュール単位でフォルダを作成します。
-            - login-user  
-                - loginUser.controller.ts
-                - loginUser.service.ts
-                - loginUser.module.ts
+        - modules ※ここはモジュール単位でフォルダを作成します。
+            - (例)login-user  
+                - (例)loginUser.controller.ts
+                - (例)loginUser.service.ts
+                - (例)loginUser.module.ts
 
         - providers
             - infrastructure
                 - in-memory-impl
                 - repository-impl
-                    - loginUser.repository.impl.ts
+                    - (例)loginUser.repository.impl.ts
 
             - domain-service
                 - domain-service
-                    - loginUser.logic.ts
+                    - (例)loginUser.logic.ts
                 - domain-service-impl
-                    - loginUser.logic.impl.ts
+                    - (例)loginUser.logic.impl.ts
                 - in-memory
                 - repository
-                    - loginUser.repository.ts
+                    - (例)loginUser.repository.ts
                 - utility
 
             - domain-model
                 - constant
                 - dto
-                    - loginUser.dto.ts
+                -  (例)loginUser.dto.ts
                 - entity
-                    - loginUser.ts
+                    - (例)loginUser.ts
                 - model
-                    - loginUser.model.ts
+                    - (例)loginUser.model.ts
                 - resource
 
         - test
