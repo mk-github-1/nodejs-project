@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { plainToClass } from 'class-transformer';
-import { LoginUser } from '@/domain-model/entity/LoginUser';
-// import { LoginUserRole } from '@/domain-model/entity/LoginUserRole';
-import { LoginUserModel } from '@/domain-model/model/LoginUserModel';
-import { LoginUserRepository } from '@/domain-service/repository/login.user.repository';
+import { LoginUser } from '@/providers/domain-model/entity/LoginUser';
+// import { LoginUserRole } from '@/providers/domain-model/entity/LoginUserRole';
+import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
+import { LoginUserRepository } from '@/providers/domain-service/repository/login.user.repository';
 
 @Injectable()
 export class LoginUserRepositoryImpl implements LoginUserRepository {

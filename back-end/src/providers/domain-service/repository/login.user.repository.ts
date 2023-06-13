@@ -1,4 +1,4 @@
-import { LoginUserModel } from '@/domain-model/model/LoginUserModel';
+import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
 
 export interface LoginUserRepository {
     findAll(): Promise<LoginUserModel[]>;
