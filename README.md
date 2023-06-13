@@ -33,19 +33,24 @@ nodejs-project
             - infrastructure
                 - in-memory-impl
                 - repository-impl
+                    - loginUser.repository.impl.ts
 
             - domain-service
                 - domain-service
                 - domain-service-impl
                 - in-memory
                 - repository
+                    - loginUser.repository.ts
                 - utility
 
             - domain-model
                 - constant
                 - dto
+                    - loginUser.dto.ts
                 - entity
+                    - loginUser.ts
                 - model
+                    - loginUser.model.ts
                 - resource
 
         - test
