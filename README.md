@@ -37,7 +37,9 @@ nodejs-project
 
             - domain-service
                 - domain-service
+                    - loginUser.logic.ts
                 - domain-service-impl
+                    - loginUser.logic.impl.ts
                 - in-memory
                 - repository
                     - loginUser.repository.ts
