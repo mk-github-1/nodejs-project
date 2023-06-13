@@ -64,4 +64,3 @@ export class LoginUserRole {
     @JoinColumn({ name: 'roleId', referencedColumnName: 'roleId' })
     public role: Role;
 }
-

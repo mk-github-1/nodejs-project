@@ -31,4 +31,3 @@ export class RoleModel {
 
     public timestamp: number;
 }
-

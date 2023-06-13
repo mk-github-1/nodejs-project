@@ -2,7 +2,7 @@
  * Rest.jsのTypeORM設定
  */
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { sharedConfig } from './shared.config';
+import { sharedConfig } from '@/shared.config';
 
 export const databaseConfig: TypeOrmModuleOptions = {
     type: sharedConfig.type,

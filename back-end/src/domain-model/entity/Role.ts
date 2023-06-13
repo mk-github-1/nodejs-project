@@ -48,4 +48,3 @@ export class Role {
     @VersionColumn()
     public timestamp: number;
 }
-

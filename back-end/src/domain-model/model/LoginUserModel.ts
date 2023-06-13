@@ -55,6 +55,5 @@ export class LoginUserModel {
 
     public timestamp: number;
 
-    public loginUserRoleModels!: LoginUserRoleModel[];
+    public loginUserRoleModels: LoginUserRoleModel[];
 }
-
