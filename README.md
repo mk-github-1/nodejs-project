@@ -48,7 +48,7 @@ nodejs-project
             - domain-model
                 - constant
                 - dto
-                -  (例)loginUser.dto.ts
+                    - (例)loginUser.dto.ts
                 - entity
                     - (例)loginUser.ts
                 - model
