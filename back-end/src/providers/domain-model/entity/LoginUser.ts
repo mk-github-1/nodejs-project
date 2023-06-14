@@ -7,7 +7,7 @@ import {
     UpdateDateColumn,
     VersionColumn,
 } from 'typeorm';
-import { LoginUserRole } from './LoginUserRole';
+import { LoginUserRole } from '@/providers/domain-model/entity/LoginUserRole';
 
 @Entity({ name: 'm_login_user' })
 export class LoginUser {

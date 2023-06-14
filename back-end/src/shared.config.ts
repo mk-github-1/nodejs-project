@@ -26,7 +26,10 @@ export const sharedConfig: {
     database: 'test_db',
     synchronize: false,
     logging: false,
-    entities: ['src/domain-model/entity/*.ts', 'src/domain-model/entity/**/*.ts'],
+    entities: [
+        'src/providers/domain-model/entity/*.ts',
+        'src/providers/domain-model/entity/**/*.ts',
+    ],
     migrations: ['src/migrations/*.ts'],
     subscribers: [],
 };

@@ -25,4 +25,8 @@ module.exports = {
             },
         ],
     },
+
+    // 配列の改行
+    arrayBracketNewLine: true,
+    arrayExpression: 'always',
 };

@@ -1,5 +1,5 @@
-import { LoginUserModel } from './LoginUserModel';
-import { RoleModel } from './RoleModel';
+import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
+import { RoleModel } from '@/providers/domain-model/model/RoleModel';
 
 export class LoginUserRoleModel {
     public constructor(options?: {
