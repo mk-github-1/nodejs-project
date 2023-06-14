@@ -1,3 +1,4 @@
+/*
 import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
 
 export interface LoginUserRepository {
@@ -7,3 +8,4 @@ export interface LoginUserRepository {
     update(id: string, model: LoginUserModel): Promise<LoginUserModel>;
     delete(id: string): Promise<void>;
 }
+ */

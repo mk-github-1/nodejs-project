@@ -2,7 +2,7 @@
  * TypeORMのマイグレーション設定
  */
 import { DataSource } from 'typeorm';
-import { sharedConfig } from '@/shared.config';
+import { sharedConfig } from './shared.config';
 
 export const AppDataSource: DataSource = new DataSource({
     type: sharedConfig.type,

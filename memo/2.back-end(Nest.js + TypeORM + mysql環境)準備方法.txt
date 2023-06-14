@@ -1,7 +1,7 @@
 back-end(Nest.js + TypeORM + mysql環境)の準備方法
 
-■ グローバルにtypeormをインストール
-npm install -g @nestjs/cli
+■ グローバルにts-node、@nestjs/cliをインストール
+npm install -g ts-node @nestjs/cli
 
 ■ フォルダに移動
 cd vscode-workspace/nodejs-project

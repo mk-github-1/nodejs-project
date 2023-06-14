@@ -27,8 +27,8 @@ export const sharedConfig: {
     synchronize: false,
     logging: false,
     entities: [
-        'src/providers/domain-model/entity/*.ts',
-        'src/providers/domain-model/entity/**/*.ts',
+        'dist/providers/domain-model/entity/*.js',
+        'dist/providers/domain-model/entity/**/*.js',
     ],
     migrations: ['src/migrations/*.ts'],
     subscribers: [],
