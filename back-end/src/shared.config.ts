@@ -30,9 +30,9 @@ export const sharedConfig: {
     entities: [
         // エンティティのパスをjs, tsで指定
         'dist/providers/domain-model/entity/*.js',
-        'dist/providers/domain-model/entity/**/*.ts',
-        'src/providers/domain-model/entity/*.ts',
-        'src/providers/domain-model/entity/**/*.ts',
+        'dist/providers/domain-model/entity/**/*.js',
+        // 'src/providers/domain-model/entity/*.ts',
+        // 'src/providers/domain-model/entity/**/*.ts',
     ],
     migrations: ['src/migrations/*.ts'],
     subscribers: [],
