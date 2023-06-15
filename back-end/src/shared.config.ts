@@ -3,6 +3,7 @@
  * ・TypeORMのマイグレーション設定
  * ・Rest.jsのTypeORM設定
  */
+
 type SupportedDatabaseType = 'mysql';
 
 export const sharedConfig: {
@@ -26,13 +27,11 @@ export const sharedConfig: {
     database: 'test_db',
     synchronize: false,
     logging: false,
-    // tsファイルだとエラーするのでentityを指定する必要がある
     entities: [
-        // エンティティのパスをjs, tsで指定
-        'dist/providers/domain-model/entity/*.js',
-        'dist/providers/domain-model/entity/**/*.js',
-        // 'src/providers/domain-model/entity/*.ts',
-        // 'src/providers/domain-model/entity/**/*.ts',
+        // 'dist/providers/domain-model/entity/*.js',
+        // 'dist/providers/domain-model/entity/**/*.js',
+        'src/providers/domain-model/entity/*.ts',
+        'src/providers/domain-model/entity/**/*.ts',
     ],
     migrations: ['src/migrations/*.ts'],
     subscribers: [],
