@@ -7,7 +7,7 @@
       "request": "launch",
       "cwd": "${workspaceFolder}/back-end",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "start"],
+      "runtimeArgs": ["run", "start:dev"],
       "sourceMaps": true,
       "env": {
         "PORT": "5000"
