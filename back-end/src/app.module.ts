@@ -4,14 +4,16 @@ import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { databaseConfig } from './database.config';
 
-// Providersのパス
-import { LoginUserRole } from './providers/domain-model/entity/LoginUserRole';
+// modulesのパス
 import { LoginUserController } from './modules/login-user/login-user.controller';
 import { LoginUserService } from './modules/login-user/login-user.service';
 
-// エンティティが存在するフォルダへのパス
+// Providersのパス
+import { LoginUserRepositoryImpl } from './modules/infrastructure/login-user.repository.impl';
+
 import { LoginUser } from './providers/domain-model/entity/LoginUser';
 import { Role } from './providers/domain-model/entity/Role';
+import { LoginUserRole } from './providers/domain-model/entity/LoginUserRole';
 
 @Module({
     imports: [
@@ -19,6 +21,6 @@ import { Role } from './providers/domain-model/entity/Role';
         TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole]),
     ],
     controllers: [AppController, LoginUserController],
-    providers: [LoginUserService],
+    providers: [LoginUserService, LoginUserRepository],
 })
 export class AppModule {}
