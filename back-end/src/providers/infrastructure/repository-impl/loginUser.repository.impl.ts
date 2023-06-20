@@ -1,4 +1,3 @@
-/*
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -31,33 +30,33 @@ export class LoginUserRepositoryImpl implements LoginUserRepository {
         return plainToClass(LoginUserModel, entity);
     }
 
-    async create(model: LoginUserModel): Promise<LoginUserModel> {
-        const entity = plainToClass(LoginUser, model);
+    async create(loginUserModel: LoginUserModel): Promise<LoginUserModel> {
+        const entity = plainToClass(LoginUser, loginUserModel);
         const createdEntity = await this.repository.save(entity);
 
         return plainToClass(LoginUserModel, createdEntity);
     }
 
     // account == id
-    async update(account: string, model: LoginUserModel): Promise<LoginUserModel> {
+    async update(account: string, loginUserModel: LoginUserModel): Promise<LoginUserModel> {
         const entity = await this.repository.findOne({ where: { account } });
         if (!entity) {
             throw new Error('Entity not found');
         }
 
         // Update entity properties with model data
-        entity.account = model.account;
-        entity.password = model.password;
-        entity.userName = model.userName;
-        entity.enabled = model.enabled;
-        entity.accountNonExpired = model.accountNonExpired;
-        entity.accountNonLocked = model.accountNonLocked;
-        entity.credentialsNonExpired = model.credentialsNonExpired;
-        entity.sortOrder = model.sortOrder;
-        entity.isDeleted = model.isDeleted;
-        entity.createdAt = model.createdAt;
-        entity.updatedAt = model.updatedAt;
-        entity.timestamp = model.timestamp;
+        entity.account = loginUserModel.account;
+        entity.password = loginUserModel.password;
+        entity.userName = loginUserModel.userName;
+        entity.enabled = loginUserModel.enabled;
+        entity.accountNonExpired = loginUserModel.accountNonExpired;
+        entity.accountNonLocked = loginUserModel.accountNonLocked;
+        entity.credentialsNonExpired = loginUserModel.credentialsNonExpired;
+        entity.sortOrder = loginUserModel.sortOrder;
+        entity.isDeleted = loginUserModel.isDeleted;
+        entity.createdAt = loginUserModel.createdAt;
+        entity.updatedAt = loginUserModel.updatedAt;
+        entity.timestamp = loginUserModel.timestamp;
 
         entity.loginUserRoles = [];
 
@@ -73,4 +72,3 @@ export class LoginUserRepositoryImpl implements LoginUserRepository {
         }
     }
 }
- */
