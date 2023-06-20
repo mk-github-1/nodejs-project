@@ -1,18 +1,37 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "プログラムの起動",
-      "type": "node",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/back-end",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "start:dev"],
-      "sourceMaps": true,
-      "env": {
-        "PORT": "5000"
-      },
-      "console": "integratedTerminal"
-    }
-  ]
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "front-end-launch",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/front-end",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "start"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "back-end-launch",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/back-end",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "start:dev"],
+            "env": {
+                "PORT": "5000"
+            },
+            "console": "integratedTerminal",
+            "outputCapture": "std"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "compound-launch",
+            "configurations": ["front-end-launch", "back-end-launch"],
+            "stopAll": true
+        }
+    ]
 }
