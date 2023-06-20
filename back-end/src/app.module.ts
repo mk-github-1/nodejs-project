@@ -21,6 +21,6 @@ import { LoginUserRole } from './providers/domain-model/entity/LoginUserRole';
         TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole]),
     ],
     controllers: [AppController, LoginUserController],
-    providers: [LoginUserService, LoginUserRepository],
+    providers: [LoginUserService, LoginUserRepositoryImpl],
 })
 export class AppModule {}
