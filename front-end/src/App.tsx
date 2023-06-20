@@ -20,8 +20,15 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> 
     </div>
+
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/loginUser" component={LoginUser} />
+      </Switch>
+    </Router>
   );
 }
 
