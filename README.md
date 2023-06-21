@@ -25,9 +25,10 @@ nodejs-project
     - back-end
         - modules ※ここはモジュール単位でフォルダを作成します。
             - (例)login-user
-                - (例)loginUser.controller.ts
-                - (例)loginUser.service.ts
-                - (例)loginUser.module.ts
+                - (例)login-user.controller.ts
+                - (例)login-user.dto.ts
+                - (例)login-user.service.ts
+                - (例)login-user.module.ts
 
         - providers ※モジュール型アーキテクチャなので見直し中
             - domain-model
