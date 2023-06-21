@@ -15,12 +15,21 @@ import { LoginUser } from './providers/domain-model/entity/LoginUser';
 import { Role } from './providers/domain-model/entity/Role';
 import { LoginUserRole } from './providers/domain-model/entity/LoginUserRole';
 
+import { LoginUserRepository } from './providers/domain-model/repository/LoginUserRepository';
+
 @Module({
     imports: [
         TypeOrmModule.forRoot(databaseConfig),
         TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole]),
     ],
     controllers: [AppController, LoginUserController],
-    providers: [LoginUserService, LoginUserRepositoryImpl],
+    providers: [
+        LoginUserService,
+        LoginUserRepositoryImpl,
+        {
+            provide: LoginUserRepository,
+            useClass: LoginUserRepositoryImpl,
+        },
+    ],
 })
 export class AppModule {}
