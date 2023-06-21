@@ -29,31 +29,18 @@ nodejs-project
                 - (例)loginUser.service.ts
                 - (例)loginUser.module.ts
 
-        - providers
+        - providers ※モジュール型アーキテクチャなので見直し中
             - domain-model
                 - constant
-                - dto
-                    - (例)loginUser.dto.ts
                 - entity
-                    - (例)loginUser.ts
+                    - (例)login-user.ts
                 - model
-                    - (例)loginUser.model.ts
+                    - (例)login-user.model.ts
                 - resource
 
             - domain-service
-                - domain-service
-                    - (例)loginUser.logic.ts
-                - domain-service-impl
-                    - (例)loginUser.logic.impl.ts
                 - in-memory
-                - repository
-                    - (例)loginUser.repository.ts
                 - utility
-
-            - infrastructure
-                - in-memory-impl
-                - repository-impl
-                    - (例)loginUser.repository.impl.ts
 
         - test
 ```
