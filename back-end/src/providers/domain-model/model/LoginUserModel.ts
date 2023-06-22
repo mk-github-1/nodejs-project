@@ -1,3 +1,5 @@
+import { Expose } from 'class-transformer';
+
 import { LoginUserRoleModel } from '@/providers/domain-model/model/LoginUserRoleModel';
 
 export class LoginUserModel {
@@ -31,29 +33,42 @@ export class LoginUserModel {
         this.loginUserRoleModels = options?.loginUserRoleModels || [];
     }
 
+    @Expose()
     public account: string;
 
+    @Expose()
     public password: string;
 
+    @Expose()
     public userName: string;
 
+    @Expose()
     public enabled: boolean;
 
+    @Expose()
     public accountNonExpired: boolean;
 
+    @Expose()
     public accountNonLocked: boolean;
 
+    @Expose()
     public credentialsNonExpired: boolean;
 
+    @Expose()
     public sortOrder: number;
 
+    @Expose()
     public isDeleted: boolean;
 
+    @Expose()
     public createdAt: Date;
 
+    @Expose()
     public updatedAt: Date;
 
+    @Expose()
     public timestamp: number;
 
+    @Expose()
     public loginUserRoleModels: LoginUserRoleModel[];
 }

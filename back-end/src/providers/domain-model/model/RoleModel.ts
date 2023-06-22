@@ -1,3 +1,5 @@
+import { Expose } from 'class-transformer';
+
 export class RoleModel {
     public constructor(options?: {
         roleId?: string;
@@ -17,17 +19,24 @@ export class RoleModel {
         this.timestamp = options?.timestamp || 0;
     }
 
+    @Expose()
     public roleId: string;
 
+    @Expose()
     public roleName: string;
 
+    @Expose()
     public sortOrder: number;
 
+    @Expose()
     public isDeleted: boolean;
 
+    @Expose()
     public createdAt: Date;
 
+    @Expose()
     public updatedAt: Date;
 
+    @Expose()
     public timestamp: number;
 }
