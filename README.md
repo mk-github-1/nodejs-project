@@ -1,3 +1,5 @@
+Repositoryの概要のRestは間違い、訂正中
+
 ## Node.js(React × Nest.js with TypeScript)の自習用リポジトリの自習用リポジトリ
 
 Node.js で、React × Nest.js プロジェクトの Web アプリケーションを作成するための自習用リポジトリです。
