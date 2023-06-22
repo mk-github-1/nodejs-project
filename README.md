@@ -10,7 +10,7 @@ TypeScript で書いています。TypeORM も使用できます。
 
 ## スクリーンショット
 
-ReactのSPAで画面遷移するサンプルです。
+React の SPA で画面遷移するサンプルです。
 
 ![react](https://github.com/mk-github-1/nodejs-project/assets/32920703/35aa8687-a4f5-4e45-bf5f-aed2e9cb170e)
 
@@ -45,13 +45,13 @@ nodejs-project
 
         - providers ※Repositoryもmodule単位にするので、providersは適切でない
             - domain-model
-            - constant (定数)
-                - Constant.ts
-            - entity (DBのEntity)
-                - (例)login-user.ts
-            - model (プログラムで使用するModel)
-                - (例)login-user.model.ts
-            - resource (言語リソース)
+                - constant (定数)
+                    - Constant.ts
+                - entity (DBのEntity)
+                    - (例)login-user.ts
+                - model (プログラムで使用するModel)
+                    - (例)login-user.model.ts
+                - resource (言語リソース)
 
         - test
 ```
