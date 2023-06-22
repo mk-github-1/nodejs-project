@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
+import LoginPartial from "./components/Layout/LoginPartial";
 import LoginUser from "./pages/LoginUser/LoginUser";
 
 function App() {
@@ -43,7 +44,10 @@ function App() {
                                         </Link>
                                     </li>
                                 </ul>
-                                {/* LoginPartial" */}
+                                {/* ヘッダの右上にLoginPartialコンポーネントを注入 */}
+                                <div className="right-corner">
+                                    <LoginPartial />
+                                </div>
                             </div>
                         </div>
                     </nav>
@@ -68,7 +72,7 @@ function App() {
                 {/* Footer */}
                 <footer className="border-top footer text-muted">
                     <div className="container">
-                        &copy; 2023 - React × Nest.js sample application / Edit{" "}
+                        &copy; 2023 - React × Nest.js sample application {" ( "} Edit{" "}
                         <code>src/App.tsx</code> and save to reload.{" "}
                         <a
                             className="App-link"
@@ -77,7 +81,8 @@ function App() {
                             rel="noopener noreferrer"
                         >
                             Learn React
-                        </a>{" "}
+                        </a>
+                        {" ) "}
                         <img src={logo} className="App-logo" alt="logo" />
                     </div>
                 </footer>

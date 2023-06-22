@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 const LoginPartial = () => {
-    const isLogin = true; // ログインの状態に応じてtrueまたはfalseを設定する
+    const isLogin = false; // ログインの状態に応じてtrueまたはfalseを設定する
 
     return (
         <>
@@ -11,12 +11,12 @@ const LoginPartial = () => {
                 {isLogin ? (
                     <>
                         <li className="nav-item">
-                            <Link className="nav-link text-dark" to="">
+                            <Link className="nav-link text-dark" to="/">
                                 Login user name
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <form className="form-inline" action="">
+                            <form className="form-inline" action="/">
                                 <button type="submit" className="nav-link btn btn-link text-dark">
                                     Logout
                                 </button>
@@ -26,13 +26,13 @@ const LoginPartial = () => {
                 ) : (
                     <>
                         <li className="nav-item">
-                            <Link className="nav-link text-dark" to="">
-                                Register
+                            <Link className="nav-link text-dark" to="/">
+                                Register(dummy)
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link text-dark" to="">
-                                Login
+                            <Link className="nav-link text-dark" to="/">
+                                Login(dummy)
                             </Link>
                         </li>
                     </>
