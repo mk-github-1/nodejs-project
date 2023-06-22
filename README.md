@@ -34,7 +34,7 @@ nodejs-project
         - test
 
     - back-end
-        - modules ※ここはモジュール単位でフォルダを作成します。
+        - modules ※module型アーキテクチャなので、module単位でフォルダを作成します。
             - (例)login-user
                 - dto
                     - login-user.dto.ts
