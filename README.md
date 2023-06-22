@@ -8,6 +8,12 @@ TypeScript で書いています。TypeORM も使用できます。
 フロントエンドプロジェクト: create-react-app front-end --template typescript  
 バックエンドプロジェクト : nest new back-end
 
+## スクリーンショット
+
+ReactのSPAで画面遷移するサンプルです。
+
+![react](https://github.com/mk-github-1/nodejs-project/assets/32920703/35aa8687-a4f5-4e45-bf5f-aed2e9cb170e)
+
 ## アーキテクチャ検討中
 
 アーキテクチャのイメージ。Excel でまとめる
