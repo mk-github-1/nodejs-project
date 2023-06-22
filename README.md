@@ -1,6 +1,6 @@
-## Node.js(React × Rest.js with TypeScript)の自習用リポジトリの自習用リポジトリ
+## Node.js(React × Nest.js with TypeScript)の自習用リポジトリの自習用リポジトリ
 
-Node.js で、React × Rest.js プロジェクトの Web アプリケーションを作成するための自習用リポジトリです。
+Node.js で、React × Nest.js プロジェクトの Web アプリケーションを作成するための自習用リポジトリです。
 TypeScript で書いています。TypeORM も使用できます。
 
 ルートプロジェクト下のサブプロジェクトは cli をインストールしてから、コマンドプロンプトで下記を実行し、作成しています。
