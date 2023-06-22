@@ -16,32 +16,36 @@ TypeScript で書いています。TypeORM も使用できます。
 nodejs-project
     - front-end
         - components
-            - model
-        - containers
+            - Shared (アプリ全体で使用するもの)
+　　            - LoginPartial.tsx
+            - utils
+        - containers (?)
+
         - pages
+            - (例)LoginUser
+                - LoginUser.tsx (画面)
+                - loginUserLogic.ts (ロジック)
         - test
-        - utils
 
     - back-end
         - modules ※ここはモジュール単位でフォルダを作成します。
             - (例)login-user
-                - (例)login-user.controller.ts
-                - (例)login-user.dto.ts
-                - (例)login-user.service.ts
-                - (例)login-user.module.ts
+                - dto
+                    - login-user.dto.ts
+                - login-user.controller.ts
+                - login-user.service.ts
+                - login-user.module.ts
+                - login-user.repository.ts ※RepositoryはTypeORMの基本のものを使用し、module単位でまとめる？？ 追加メソッドをどうするか検討必要
 
-        - providers ※モジュール型アーキテクチャなので見直し中
+        - providers ※Repositoryもmodule単位にするので、providersは適切でない
             - domain-model
-                - constant
-                - entity
-                    - (例)login-user.ts
-                - model
-                    - (例)login-user.model.ts
-                - resource
-
-            - domain-service
-                - in-memory
-                - utility
+            - constant (定数)
+                - Constant.ts
+            - entity (DBのEntity)
+                - (例)login-user.ts
+            - model (プログラムで使用するModel)
+                - (例)login-user.model.ts
+            - resource (言語リソース)
 
         - test
 ```

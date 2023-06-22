@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import LoginPartial from "./components/Layout/LoginPartial";
+import LoginPartial from "./components/shared/LoginPartial";
 import LoginUser from "./pages/LoginUser/LoginUser";
 
 function App() {
