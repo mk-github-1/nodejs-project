@@ -22,7 +22,7 @@ React の SPA で画面遷移するサンプルです。
 nodejs-project
     - front-end
         - components
-            - Shared (アプリ全体で使用するもの)
+            - shared (アプリ全体で使用するもの)
 　　            - LoginPartial.tsx
             - utils
         - containers (?)
@@ -48,9 +48,9 @@ nodejs-project
                 - constant (定数)
                     - Constant.ts
                 - entity (DBのEntity)
-                    - (例)login-user.ts
+                    - (例)LoginUser.ts
                 - model (プログラムで使用するModel)
-                    - (例)login-user.model.ts
+                    - (例)LoginUser.model.ts
                 - resource (言語リソース)
 
         - test
