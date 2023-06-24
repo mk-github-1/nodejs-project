@@ -7,12 +7,13 @@ import { databaseConfig } from './database.config';
 // modulesのパス
 import { LoginUserController } from './modules/login-user/login-user.controller';
 import { LoginUserService } from './modules/login-user/login-user.service';
-import { LoginUserRepository } from './modules/login-user/login-user.repository';
 
 // Providersのパス
 import { LoginUser } from './providers/domain-model/entity/LoginUser';
 import { Role } from './providers/domain-model/entity/Role';
 import { LoginUserRole } from './providers/domain-model/entity/LoginUserRole';
+
+import { LoginUserRepository } from './providers/infrastructure/repository/login-user.repository';
 
 @Module({
     imports: [
@@ -20,6 +21,14 @@ import { LoginUserRole } from './providers/domain-model/entity/LoginUserRole';
         TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole]),
     ],
     controllers: [AppController, LoginUserController],
-    providers: [LoginUserService, LoginUserRepository],
+    providers: [
+        LoginUserService,
+        /*
+        {
+            provide: 'ILoginUserRepository',
+            useClass: LoginUserRepository,
+        },
+        */
+    ],
 })
 export class AppModule {}

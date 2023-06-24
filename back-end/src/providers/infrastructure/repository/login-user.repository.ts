@@ -6,28 +6,13 @@ import { Repository } from 'typeorm';
 import { LoginUser } from '@/providers/domain-model/entity/LoginUser';
 import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
 import { LoginUserRoleModel } from '@/providers/domain-model/model/LoginUserRoleModel';
-import { IGenericRepository } from '@/providers/IGenericRepository';
+import { ILoginUserRepository } from '@/providers/domain-service/i-repository/i-login-user.repository';
 
-/*
- * Interface (CRUD + sort)
- */
-export interface ILoginUserRepository extends IGenericRepository<LoginUserModel> {
-    findAll(): Promise<LoginUserModel[]>;
-    findById(account: string): Promise<LoginUserModel>;
-    create(loginUserModel: LoginUserModel): Promise<void>;
-    update(account: string, loginUserModel: LoginUserModel): Promise<void>;
-    delete(account: string): Promise<void>;
-    sort(sortLists: Record<string, number>[]): Promise<void>;
-}
-
-/*
- * Class
- */
 @Injectable()
 export class LoginUserRepository implements ILoginUserRepository {
     constructor(
         @InjectRepository(LoginUser)
-        private loginUserRepository: Repository<LoginUser>,
+        private readonly loginUserRepository: Repository<LoginUser>,
     ) {}
 
     async findAll(): Promise<LoginUserModel[]> {
