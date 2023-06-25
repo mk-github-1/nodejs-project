@@ -35,11 +35,11 @@ export class LoginUserRepository implements ILoginUserRepository {
 
                 // loginUserRolesの関連オブジェクトを除外
                 loginUserRoleModels.forEach((e) => {
-                    e.loginUserModel = undefined;
-                    e.roleModel = undefined;
+                    // loginUserModelプロパティを削除
+                    delete e.loginUserModel;
+                    // roleModelプロパティを削除
+                    delete e.roleModel;
                 });
-
-                loginUserModel.loginUserRoleModels = loginUserRoleModels;
             }
 
             loginUsersModel.push(loginUserModel);
