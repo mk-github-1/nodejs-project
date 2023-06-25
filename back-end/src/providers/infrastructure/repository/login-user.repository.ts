@@ -74,19 +74,19 @@ export class LoginUserRepository implements ILoginUserRepository {
     async sort(sortLists: Record<string, number>[]): Promise<void> {
         // 同じ順序がある時、更新日の新しいものを上にする、isDelete == trueは順序を後にする
         let query: string = `DECLARE @temp TABLE ( 
-            id int NOT NULL, 
+            account varchar(256) NOT NULL, 
             sortOrder int NOT NULL 
             ) `;
 
         for (const item of sortLists) {
-            query += `INSERT INTO @temp (id, sortOrder) VALUES (${item.Key}, ${item.Value}) `;
+            query += `INSERT INTO @temp (account, sortOrder) VALUES (${item.Key}, ${item.Value}) `;
         }
 
         query += `UPDATE m_login_user 
             SET sortOrder = B.sortOrder 
             FROM m_login_user AS A 
             LEFT OUTER JOIN ( 
-               SELECT C.id, ROW_NUMBER() OVER ( 
+               SELECT C.account, ROW_NUMBER() OVER ( 
                    ORDER BY 
                        C.isDeleted ASC, 
                        D.sortOrder ASC, 
@@ -94,10 +94,10 @@ export class LoginUserRepository implements ILoginUserRepository {
                 ) AS 'sortOrder' 
                 FROM m_login_user AS C 
                 LEFT OUTER JOIN @temp AS D 
-                ON C.id = D.id 
+                ON C.account = D.account 
             ) AS B 
-            ON A.id = B.id 
-            WHERE B.id IS NOT NULL `;
+            ON A.account = B.account 
+            WHERE B.account IS NOT NULL `;
 
         await this.loginUserRepository.query(query);
     }
