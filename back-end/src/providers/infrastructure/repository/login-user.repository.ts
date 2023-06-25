@@ -15,20 +15,26 @@ export class LoginUserRepository implements ILoginUserRepository {
         private readonly loginUserRepository: Repository<LoginUser>,
     ) {}
 
-    async findAll(): Promise<LoginUserModel[]> {
+    async findAll(): Promise<Array<LoginUserModel>> {
         // データ操作 → Entity to Model マッピング
-        const loginUsers: LoginUser[] = await this.loginUserRepository.find();
+        const loginUsers: Array<LoginUser> = await this.loginUserRepository.find({
+            relations: ['loginUserRoles'],
+        });
 
-        const loginUsersModel: LoginUserModel[] = [];
+        const loginUsersModel: Array<LoginUserModel> = new Array<LoginUserModel>();
 
+        // .forEachが使えるかも
         for (const loginUser of loginUsers) {
             const loginUserModel: LoginUserModel = plainToClass(LoginUserModel, loginUser);
 
             // 【関連データの取得に失敗している】
             if (loginUser.loginUserRoles) {
-                const loginUserRoleModels: LoginUserRoleModel[] = loginUser.loginUserRoles.map(
+                let loginUserRoleModels: Array<LoginUserRoleModel> = loginUser.loginUserRoles.map(
                     (role) => plainToClass(LoginUserRoleModel, role),
                 );
+
+                // loginUserRole.loginUserModel = undefined;
+                // loginUserRole.roleModel = undefined;
 
                 loginUserModel.loginUserRoleModels = loginUserRoleModels;
             }
@@ -42,9 +48,12 @@ export class LoginUserRepository implements ILoginUserRepository {
     // 通常は id: number
     async findById(account: string): Promise<LoginUserModel> {
         // データ操作 → Entity to Model マッピング
-        const loginUser: LoginUser = await this.loginUserRepository.findOne({ where: { account } });
+        const loginUser: LoginUser = await this.loginUserRepository.findOne({
+            where: { account },
+            relations: ['loginUserRoles'],
+        });
 
-        const userRoles: LoginUserRoleModel[] = loginUser.loginUserRoles.map((role) =>
+        const userRoles: Array<LoginUserRoleModel> = loginUser.loginUserRoles.map((role) =>
             plainToClass(LoginUserRoleModel, role),
         );
         const loginUserModel: LoginUserModel = plainToClass(LoginUserModel, loginUser);
@@ -56,12 +65,20 @@ export class LoginUserRepository implements ILoginUserRepository {
     async create(loginUserModel: LoginUserModel): Promise<void> {
         // Model to Entity マッピング → データ操作
         const loginUser: LoginUser = plainToClass(LoginUser, loginUserModel);
+
+        // 関連Modelのマッピングが必要
+        // write code
+
         await this.loginUserRepository.create(loginUser);
     }
 
     async update(account: string, loginUserModel: LoginUserModel): Promise<void> {
         // Model to Entity マッピング → データ操作
         const loginUser: LoginUser = plainToClass(LoginUser, loginUserModel);
+
+        // 関連Modelのマッピングが必要
+        // write code
+
         await this.loginUserRepository.update(account, loginUserModel);
     }
 
@@ -70,8 +87,8 @@ export class LoginUserRepository implements ILoginUserRepository {
         await this.loginUserRepository.delete(account);
     }
 
-    // 通常はRecord<number, number>[]
-    async sort(sortLists: Record<string, number>[]): Promise<void> {
+    // 通常はArray<Record<number, number>>
+    async sort(sortLists: Array<Record<string, number>>): Promise<void> {
         // 同じ順序がある時、更新日の新しいものを上にする、isDelete == trueは順序を後にする
         let query: string = `DECLARE @temp TABLE ( 
             account varchar(256) NOT NULL, 
