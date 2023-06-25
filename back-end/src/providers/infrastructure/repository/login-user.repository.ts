@@ -22,11 +22,17 @@ export class LoginUserRepository implements ILoginUserRepository {
         const loginUsersModel: LoginUserModel[] = [];
 
         for (const loginUser of loginUsers) {
-            const loginUserRoleModels: LoginUserRoleModel[] = loginUser.loginUserRoles.map((role) =>
-                plainToClass(LoginUserRoleModel, role),
-            );
             const loginUserModel: LoginUserModel = plainToClass(LoginUserModel, loginUser);
-            loginUserModel.loginUserRoleModels = loginUserRoleModels;
+
+            // 【関連データの取得に失敗している】
+            if (loginUser.loginUserRoles) {
+                const loginUserRoleModels: LoginUserRoleModel[] = loginUser.loginUserRoles.map(
+                    (role) => plainToClass(LoginUserRoleModel, role),
+                );
+
+                loginUserModel.loginUserRoleModels = loginUserRoleModels;
+            }
+
             loginUsersModel.push(loginUserModel);
         }
 
