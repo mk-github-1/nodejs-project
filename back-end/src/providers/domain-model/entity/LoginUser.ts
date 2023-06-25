@@ -24,7 +24,7 @@ export class LoginUser {
         createdAt?: Date;
         updatedAt?: Date;
         timestamp?: number;
-        // loginUserRoles?: LoginUserRole[];
+        // loginUserRoles?: Array<LoginUserRole>;
     }) {
         this.account = options?.account || '';
         this.password = options?.password || '';
@@ -38,7 +38,7 @@ export class LoginUser {
         this.createdAt = options?.createdAt || new Date();
         this.updatedAt = options?.updatedAt || new Date();
         this.timestamp = options?.timestamp || 0;
-        // this.loginUserRoles = options?.loginUserRoles || [];
+        // this.loginUserRoles = options?.loginUserRoles || new Array<LoginUser>;
     }
 
     @PrimaryColumn({ length: 256 })
@@ -88,5 +88,5 @@ export class LoginUser {
         cascade: true,
         onDelete: 'CASCADE',
     })
-    public loginUserRoles!: LoginUserRole[];
+    public loginUserRoles!: Array<LoginUserRole>;
 }

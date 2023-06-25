@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post, Put, Delete } from '@nestjs/common';
 import { LoginUserService } from './login-user.service';
 import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('login-user')
 export class LoginUserController {
     constructor(private readonly loginUserService: LoginUserService) {}

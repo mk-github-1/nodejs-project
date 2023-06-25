@@ -72,8 +72,33 @@ export class LoginUserRepository implements ILoginUserRepository {
 
     // 通常はRecord<number, number>[]
     async sort(sortLists: Record<string, number>[]): Promise<void> {
-        // ソート処理のSQLを実装する
-        const query = 'SELECT * FROM your_table';
-        const result = await this.loginUserRepository.query(query);
+        // 同じ順序がある時、更新日の新しいものを上にする、isDelete == trueは順序を後にする
+        let query: string = `DECLARE @temp TABLE ( 
+            id int NOT NULL, 
+            sortOrder int NOT NULL 
+            ) `;
+
+        for (const item of sortLists) {
+            query += `INSERT INTO @temp (id, sortOrder) VALUES (${item.Key}, ${item.Value}) `;
+        }
+
+        query += `UPDATE m_login_user 
+            SET sortOrder = B.sortOrder 
+            FROM m_login_user AS A 
+            LEFT OUTER JOIN ( 
+               SELECT C.id, ROW_NUMBER() OVER ( 
+                   ORDER BY 
+                       C.isDeleted ASC, 
+                       D.sortOrder ASC, 
+                       C.updatedAt DESC 
+                ) AS 'sortOrder' 
+                FROM m_login_user AS C 
+                LEFT OUTER JOIN @temp AS D 
+                ON C.id = D.id 
+            ) AS B 
+            ON A.id = B.id 
+            WHERE B.id IS NOT NULL `;
+
+        await this.loginUserRepository.query(query);
     }
 }

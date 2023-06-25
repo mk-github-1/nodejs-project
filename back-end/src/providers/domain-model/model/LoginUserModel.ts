@@ -16,7 +16,7 @@ export class LoginUserModel {
         createdAt?: Date;
         updatedAt?: Date;
         timestamp?: number;
-        loginUserRoleModels?: LoginUserRoleModel[];
+        loginUserRoleModels?: Array<LoginUserRoleModel>;
     }) {
         this.account = options?.account || '';
         this.password = options?.password || '';
@@ -30,7 +30,7 @@ export class LoginUserModel {
         this.createdAt = options?.createdAt || new Date();
         this.updatedAt = options?.updatedAt || new Date();
         this.timestamp = options?.timestamp || 0;
-        this.loginUserRoleModels = options?.loginUserRoleModels || [];
+        this.loginUserRoleModels = options?.loginUserRoleModels || new Array<LoginUserRoleModel>();
     }
 
     @Expose()
@@ -70,5 +70,5 @@ export class LoginUserModel {
     public timestamp: number;
 
     @Expose()
-    public loginUserRoleModels: LoginUserRoleModel[];
+    public loginUserRoleModels: Array<LoginUserRoleModel>;
 }
