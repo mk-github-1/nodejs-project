@@ -1,3 +1,3 @@
-const loginUserLogic = () => {};
+const loginUserEdit = () => {};
 
-export default loginUserLogic;
+export default loginUserEdit;
