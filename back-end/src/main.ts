@@ -3,9 +3,13 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { AppController } from './app.controller';
 import { LoginUserController } from './modules/login-user/login-user.controller';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
+
+    // ValidationPipeの追加
+    app.useGlobalPipes(new ValidationPipe());
 
     // OpenAPI(swagger)の追加
     const config = new DocumentBuilder()
