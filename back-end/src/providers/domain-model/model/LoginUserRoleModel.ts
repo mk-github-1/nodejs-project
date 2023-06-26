@@ -1,4 +1,4 @@
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 
 import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
 import { RoleModel } from '@/providers/domain-model/model/RoleModel';
@@ -26,25 +26,18 @@ export class LoginUserRoleModel {
         this.roleModel = options?.roleModel || new RoleModel();
     }
 
-    @Expose()
     public account: string;
 
-    @Expose()
     public roleId: string;
 
-    @Expose()
     public sortOrder: number;
 
-    @Expose()
     public isDeleted: boolean;
 
-    @Expose()
     public createdAt: Date;
 
-    @Expose()
     public updatedAt: Date;
 
-    @Expose()
     public timestamp: number;
 
     public loginUserModel: LoginUserModel;

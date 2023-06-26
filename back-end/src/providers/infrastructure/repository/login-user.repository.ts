@@ -16,72 +16,74 @@ export class LoginUserRepository implements ILoginUserRepository {
     ) {}
 
     async findAll(): Promise<Array<LoginUserModel>> {
-        // データ操作 → Entity to Model マッピング
+        // データ操作
         const loginUsers: Array<LoginUser> = await this.loginUserRepository.find({
             relations: ['loginUserRoles'],
         });
 
-        const loginUsersModel: Array<LoginUserModel> = new Array<LoginUserModel>();
+        // Entity to Model マッピング
+        const loginUsersModels: Array<LoginUserModel> = loginUsers.map((element) => {
+            let loginUserModel: LoginUserModel = plainToClass(LoginUserModel, element, {
+                excludeExtraneousValues: true,
+            });
 
-        // .forEachが使えるかも
-        for (const loginUser of loginUsers) {
-            const loginUserModel: LoginUserModel = plainToClass(LoginUserModel, loginUser);
-
-            // 【関連データの取得に失敗している】
-            if (loginUser.loginUserRoles) {
-                let loginUserRoleModels: Array<LoginUserRoleModel> = loginUser.loginUserRoles.map(
-                    (role) => plainToClass(LoginUserRoleModel, role),
-                );
-
-                // loginUserRolesの関連オブジェクトを除外
-                loginUserRoleModels.forEach((e) => {
-                    // loginUserModelプロパティを削除
-                    delete e.loginUserModel;
-                    // roleModelプロパティを削除
-                    delete e.roleModel;
-                });
+            if (element.loginUserRoles) {
+                loginUserModel.loginUserRoleModels = element.loginUserRoles.map((element2) => {
+                    return plainToClass(LoginUserRoleModel, element2, {
+                        excludeExtraneousValues: true,
+                    });
+                }, []);
             }
 
-            loginUsersModel.push(loginUserModel);
-        }
+            return loginUserModel;
+        }, []);
 
-        return loginUsersModel;
+        return loginUsersModels;
     }
 
     // 通常は id: number
     async findById(account: string): Promise<LoginUserModel> {
-        // データ操作 → Entity to Model マッピング
+        // データ操作
         const loginUser: LoginUser = await this.loginUserRepository.findOne({
             where: { account },
             relations: ['loginUserRoles'],
         });
 
-        const userRoles: Array<LoginUserRoleModel> = loginUser.loginUserRoles.map((role) =>
-            plainToClass(LoginUserRoleModel, role),
-        );
-        const loginUserModel: LoginUserModel = plainToClass(LoginUserModel, loginUser);
-        loginUserModel.loginUserRoleModels = userRoles;
+        // Entity to Model マッピング
+        let loginUserModel: LoginUserModel = plainToClass(LoginUserModel, loginUser, {
+            excludeExtraneousValues: true,
+        });
+
+        if (loginUser.loginUserRoles) {
+            loginUserModel.loginUserRoleModels = loginUser.loginUserRoles.map((element) => {
+                return plainToClass(LoginUserRoleModel, element, {
+                    excludeExtraneousValues: true,
+                });
+            }, []);
+        }
 
         return loginUserModel;
     }
 
     async create(loginUserModel: LoginUserModel): Promise<void> {
-        // Model to Entity マッピング → データ操作
+        // Model to Entity マッピング
         const loginUser: LoginUser = plainToClass(LoginUser, loginUserModel);
 
         // 関連Modelのマッピングが必要
         // write code
 
+        // データ操作
         await this.loginUserRepository.create(loginUser);
     }
 
     async update(account: string, loginUserModel: LoginUserModel): Promise<void> {
-        // Model to Entity マッピング → データ操作
+        // Model to Entity マッピング
         const loginUser: LoginUser = plainToClass(LoginUser, loginUserModel);
 
         // 関連Modelのマッピングが必要
         // write code
 
+        // データ操作
         await this.loginUserRepository.update(account, loginUserModel);
     }
 
@@ -90,8 +92,11 @@ export class LoginUserRepository implements ILoginUserRepository {
         await this.loginUserRepository.delete(account);
     }
 
+    // LoginUserはsortしなくていい
     // 通常はArray<Record<number, number>>
     async sort(sortLists: Array<Record<string, number>>): Promise<void> {
+        /*
+        // SQLクエリの組立
         // 同じ順序がある時、更新日の新しいものを上にする、isDelete == trueは順序を後にする
         let query: string = `DECLARE @temp TABLE ( 
             account varchar(256) NOT NULL, 
@@ -119,6 +124,8 @@ export class LoginUserRepository implements ILoginUserRepository {
             ON A.account = B.account 
             WHERE B.account IS NOT NULL `;
 
+        // データ操作
         await this.loginUserRepository.query(query);
+        */
     }
 }

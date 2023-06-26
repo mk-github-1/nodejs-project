@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { LoginUser } from '@/providers/domain-model/entity/LoginUser';
 import { Role } from '@/providers/domain-model/entity/Role';
+import { Exclude } from 'class-transformer';
 
 @Entity({ name: 'm_login_user_role' })
 export class LoginUserRole {
