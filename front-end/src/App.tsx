@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import LoginPartial from "./components/shared/LoginPartial";
 import LoginUser from "./pages/LoginUser/LoginUser";
+import LoginUserEdit from "./pages/LoginUser/LoginUserEdit/loginUserEdit";
 
 function App() {
     return (
@@ -59,12 +60,14 @@ function App() {
                         <div>
                             <nav>
                                 <Link to="/">Homeへ画面遷移</Link>　|　
-                                <Link to="/login-user">LoginUserへ画面遷移</Link>
+                                <Link to="/login-user">LoginUserへ画面遷移</Link>　|　
+                                <Link to="/login-user-edit">LoginUserEditへ画面遷移</Link>
                             </nav>
                         </div>
 
                         <Routes>
                             <Route path="/login-user" element={<LoginUser />} />
+                            <Route path="/login-user-edit" element={<LoginUserEdit />} />
                         </Routes>
                     </main>
                 </div>

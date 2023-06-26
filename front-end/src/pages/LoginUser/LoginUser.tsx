@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import loginUserAction from "./loginUserAction";
 
 const LoginUser = () => {
     // コンポーネントがマウントされた時に実行されるコード
@@ -8,7 +7,6 @@ const LoginUser = () => {
         console.log("コンポーネントがマウントされました");
 
         // ここに任意のアクションを追加します
-        loginUserAction();
     }, []);
 
     return (
