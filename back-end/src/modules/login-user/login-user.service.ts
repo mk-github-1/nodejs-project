@@ -1,12 +1,24 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 
 import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
-import { ILoginUserRepository } from '@/providers/domain-service/i-repository/i-login-user.repository';
 import { LoginUserRepository } from '@/providers/infrastructure/repository/login-user.repository';
+import { ConstantTokens } from '@/providers/domain-model/constant/ConstantTokens';
+
+export interface ILoginUserService {
+    findAll(): Promise<LoginUserModel[]>;
+    findById(account: string): Promise<LoginUserModel>;
+    create(loginUserModel: LoginUserModel): Promise<void>;
+    update(account: string, loginUserModel: LoginUserModel): Promise<void>;
+    delete(account: string): Promise<void>;
+    sort(sortLists: Record<string, number>[]): Promise<void>;
+}
 
 @Injectable()
-export class LoginUserService {
-    constructor(private readonly loginUserRepository: LoginUserRepository) {}
+export class LoginUserService implements ILoginUserService {
+    constructor(
+        @Inject(ConstantTokens.ILoginUserRepository)
+        private readonly loginUserRepository: LoginUserRepository,
+    ) {}
 
     // 単純にメソッド呼び出しになっているが、実際は必要なものを実装する
     async findAll(): Promise<LoginUserModel[]> {

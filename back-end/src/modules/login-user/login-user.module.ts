@@ -12,10 +12,20 @@ import { LoginUserRole } from '@/providers/domain-model/entity/LoginUserRole';
 
 import { LoginUserRepository } from '@/providers/infrastructure/repository/login-user.repository';
 import { ShareProviderModule } from '@/providers/share.provider.module';
+import { ConstantTokens } from '@/providers/domain-model/constant/ConstantTokens';
 
 @Module({
     imports: [ShareProviderModule, TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole])],
     controllers: [LoginUserController],
-    providers: [LoginUserService, LoginUserRepository],
+    providers: [
+        {
+            provide: ConstantTokens.ILoginUserService,
+            useClass: LoginUserService,
+        },
+        {
+            provide: ConstantTokens.ILoginUserRepository,
+            useClass: LoginUserRepository,
+        },
+    ],
 })
 export class LoginUserModule {}

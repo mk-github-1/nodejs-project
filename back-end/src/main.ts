@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { AppController } from './app.controller';
+import { LoginUserController } from './modules/login-user/login-user.controller';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -8,18 +10,11 @@ async function bootstrap() {
     // OpenAPI(swagger)の追加
     const config = new DocumentBuilder()
         .setTitle('OpenAPI(swagger)')
-        //.setDescription('OpenAPI(swagger) description')
+        .setDescription('OpenAPI(swagger) description')
         .setVersion('1.0')
-        .addTag('tags')
         .build();
 
     const document = SwaggerModule.createDocument(app, config);
-
-    /*
-    const document = SwaggerModule.createDocument(app, config, {
-        include: [AppController, LoginUserController],
-    });
-     */
 
     SwaggerModule.setup('api', app, document);
 
