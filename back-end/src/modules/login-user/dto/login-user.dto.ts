@@ -1,4 +1,6 @@
-export class UpdateLoginUserDto {
+import { Expose } from 'class-transformer';
+
+export class LoginUserDto {
     public constructor(options?: {
         account?: string;
         password?: string;
@@ -29,43 +31,48 @@ export class UpdateLoginUserDto {
         this.loginUserRoleDtos = options?.loginUserRoleDtos || new Array<LoginUserRoleDto>();
     }
 
+    @Expose()
     public account: string;
 
+    @Expose()
     public password: string;
 
+    @Expose()
     public userName: string;
 
+    @Expose()
     public enabled: boolean;
 
+    @Expose()
     public accountNonExpired: boolean;
 
+    @Expose()
     public accountNonLocked: boolean;
 
+    @Expose()
     public credentialsNonExpired: boolean;
 
+    @Expose()
     public sortOrder: number;
 
+    @Expose()
     public isDeleted: boolean;
 
+    @Expose()
     public createdAt: Date;
 
+    @Expose()
     public updatedAt: Date;
 
+    @Expose()
     public timestamp: number;
 
+    @Expose()
     public loginUserRoleDtos: Array<LoginUserRoleDto>;
 }
 
 export class LoginUserRoleDto {
-    public constructor(options?: {
-        account?: string;
-        roleId?: string;
-        sortOrder?: number;
-        isDeleted?: boolean;
-        createdAt?: Date;
-        updatedAt?: Date;
-        timestamp?: number;
-    }) {
+    public constructor(options?: { account?: string; roleId?: string; sortOrder?: number; isDeleted?: boolean; createdAt?: Date; updatedAt?: Date; timestamp?: number }) {
         this.account = options?.account || '';
         this.roleId = options?.roleId || '';
         this.sortOrder = options?.sortOrder || 0;
@@ -75,17 +82,24 @@ export class LoginUserRoleDto {
         this.timestamp = options?.timestamp || 0;
     }
 
+    @Expose()
     public account: string;
 
+    @Expose()
     public roleId: string;
 
+    @Expose()
     public sortOrder: number;
 
+    @Expose()
     public isDeleted: boolean;
 
+    @Expose()
     public createdAt: Date;
 
+    @Expose()
     public updatedAt: Date;
 
+    @Expose()
     public timestamp: number;
 }

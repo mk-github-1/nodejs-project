@@ -33,29 +33,42 @@ export class LoginUserModel {
         this.loginUserRoleModels = options?.loginUserRoleModels || new Array<LoginUserRoleModel>();
     }
 
+    @Expose()
     public account: string;
 
+    @Expose()
     public password: string;
 
+    @Expose()
     public userName: string;
 
+    @Expose()
     public enabled: boolean;
 
+    @Expose()
     public accountNonExpired: boolean;
 
+    @Expose()
     public accountNonLocked: boolean;
 
+    @Expose()
     public credentialsNonExpired: boolean;
 
+    @Expose()
     public sortOrder: number;
 
+    @Expose()
     public isDeleted: boolean;
 
+    @Expose()
     public createdAt: Date;
 
+    @Expose()
     public updatedAt: Date;
 
+    @Expose()
     public timestamp: number;
 
+    @Expose()
     public loginUserRoleModels: Array<LoginUserRoleModel>;
 }

@@ -1,13 +1,6 @@
-import {
-    Entity,
-    PrimaryColumn,
-    Column,
-    OneToMany,
-    CreateDateColumn,
-    UpdateDateColumn,
-    VersionColumn,
-} from 'typeorm';
+import { Entity, PrimaryColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn, VersionColumn } from 'typeorm';
 import { LoginUserRole } from '@/providers/domain-model/entity/LoginUserRole';
+import { Expose } from 'class-transformer';
 
 @Entity({ name: 'm_login_user' })
 export class LoginUser {
@@ -41,49 +34,62 @@ export class LoginUser {
         // this.loginUserRoles = options?.loginUserRoles || new Array<LoginUser>;
     }
 
+    @Expose()
     @PrimaryColumn({ length: 256 })
     public account: string;
 
     // Node.jsでパスワードのエンコードをどうするか調べる
+    @Expose()
     @Column({ length: 256 })
     public password: string;
 
+    @Expose()
     @Column({ length: 256 })
     public userName: string;
 
     // アカウントが有効かどうかを示すフラグ
+    @Expose()
     @Column()
     public enabled: boolean;
 
     // アカウントの有効期限が切れているかどうかを示すフラグ
+    @Expose()
     @Column()
     public accountNonExpired: boolean;
 
     // 資格情報の有効期限が切れているかどうかを示すフラグ
+    @Expose()
     @Column()
     public accountNonLocked: boolean;
 
     // アカウントがロックされているかどうかを示すフラグ
+    @Expose()
     @Column()
     public credentialsNonExpired: boolean;
 
+    @Expose()
     @Column()
     public sortOrder: number;
 
+    @Expose()
     @Column()
     public isDeleted: boolean;
 
+    @Expose()
     @CreateDateColumn()
     public createdAt: Date;
 
+    @Expose()
     @UpdateDateColumn()
     public updatedAt: Date;
 
+    @Expose()
     @VersionColumn()
     public timestamp: number;
 
     // ユーザーが持つ権限のリスト
     // @JoinColumn()
+    @Expose()
     @OneToMany(() => LoginUserRole, (loginUserRole) => loginUserRole.loginUser, {
         cascade: true,
         onDelete: 'CASCADE',

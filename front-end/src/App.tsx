@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import LoginPartial from "./components/shared/LoginPartial";
 import LoginUser from "./pages/LoginUser/LoginUser";
-import LoginUserEdit from "./pages/LoginUser/LoginUserEdit/loginUserEdit";
+import LoginUserEdit from "./pages/LoginUser/loginUserEdit";
 
 function App() {
     return (

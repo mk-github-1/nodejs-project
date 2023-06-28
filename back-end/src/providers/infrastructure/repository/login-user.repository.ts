@@ -29,9 +29,19 @@ export class LoginUserRepository implements ILoginUserRepository {
 
             if (element.loginUserRoles) {
                 loginUserModel.loginUserRoleModels = element.loginUserRoles.map((element2) => {
-                    return plainToClass(LoginUserRoleModel, element2, {
+                    // 循環参照の回避
+                    element2.loginUser = undefined;
+                    element2.role = undefined;
+
+                    const loginUserRoleModel: LoginUserRoleModel = plainToClass(LoginUserRoleModel, element2, {
                         excludeExtraneousValues: true,
                     });
+
+                    // 循環参照の回避
+                    loginUserRoleModel.loginUserModel = undefined;
+                    loginUserRoleModel.roleModel = undefined;
+
+                    return loginUserRoleModel;
                 }, []);
             }
 
@@ -56,9 +66,19 @@ export class LoginUserRepository implements ILoginUserRepository {
 
         if (loginUser.loginUserRoles) {
             loginUserModel.loginUserRoleModels = loginUser.loginUserRoles.map((element) => {
-                return plainToClass(LoginUserRoleModel, element, {
+                // 循環参照の回避
+                element.loginUser = undefined;
+                element.role = undefined;
+
+                const loginUserRoleModel: LoginUserRoleModel = plainToClass(LoginUserRoleModel, element, {
                     excludeExtraneousValues: true,
                 });
+
+                // 循環参照の回避
+                loginUserRoleModel.loginUserModel = undefined;
+                loginUserRoleModel.roleModel = undefined;
+
+                return loginUserRoleModel;
             }, []);
         }
 
