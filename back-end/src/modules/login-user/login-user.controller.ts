@@ -4,6 +4,9 @@ import { ConstantTokens } from '@/providers/domain-model/constant/ConstantTokens
 
 import { LoginUserService } from './login-user.service';
 import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
+import { CreateLoginUserDto } from './dto/create-login-user.dto copy';
+import { plainToClass } from 'class-transformer';
+import { UpdateLoginUserDto } from './dto/update-login-user.dto';
 
 @ApiTags('login-user')
 @Controller('login-user')
@@ -30,17 +33,24 @@ export class LoginUserController {
     @Post()
     @ApiOperation({ summary: 'Create a login-user' })
     @ApiResponse({ status: 201, description: 'Create a new login-user.' })
-    async create(@Body() loginUserModel: LoginUserModel): Promise<void> {
+    async create(@Body() createLoginUserDto: CreateLoginUserDto): Promise<void> {
+        // Validationが有効か確認必要
+        const loginUserModel: LoginUserModel = plainToClass(LoginUserModel, createLoginUserDto, {
+            excludeExtraneousValues: true,
+        });
+
         return this.loginUserService.create(loginUserModel);
     }
 
     @Put(':account')
     @ApiOperation({ summary: 'Update a login-user by account' })
     @ApiResponse({ status: 200, description: 'Update a login-user.' })
-    async update(
-        @Param('account') account: string,
-        @Body() loginUserModel: LoginUserModel,
-    ): Promise<void> {
+    async update(@Param('account') account: string, @Body() updateLoginUserDto: UpdateLoginUserDto): Promise<void> {
+        // Validationが有効か確認必要
+        const loginUserModel: LoginUserModel = plainToClass(LoginUserModel, updateLoginUserDto, {
+            excludeExtraneousValues: true,
+        });
+
         return this.loginUserService.update(account, loginUserModel);
     }
 

@@ -1,10 +1,8 @@
-root = true
-
 [*]
+root = true
+charset = utf-8
 indent_style = space
 indent_size = 4
+max_line_length = 256
 insert_final_newline = false
-trim_trailing_whitespace = false
-charset = utf-8
-max_line_length = 100
-root = true
+trim_trailing_whitespace = true

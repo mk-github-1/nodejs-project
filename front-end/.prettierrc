@@ -1,0 +1,20 @@
+{
+    "overrides": [
+        {
+            "files": ["*.ts", "tsx"],
+            "options": {
+                "trailingComma": "all",
+                "bracketSpacing": true,
+                "jsxBracketSameLine": false
+            }
+        },
+        {
+            "files": "*.json",
+            "options": {
+                "trailingComma": "all",
+                "bracketSpacing": true,
+                "jsxBracketSameLine": false
+            }
+        }
+    ]
+}
