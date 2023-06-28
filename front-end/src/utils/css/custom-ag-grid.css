@@ -1,0 +1,89 @@
+/* Ag grid custom css */
+
+/* Ag grid "vertical border" to "ag-theme-balham.css". */
+.ag-cell {
+    border-right: 1px solid #e5e5e5 !important;
+}
+
+.ag-cell-focus {
+    border: 1px solid #0091ea !important;
+}
+
+.ag-body-viewport {
+    overflow-y: scroll !important;
+}
+
+/* Ag grid tooltip */
+
+.ag-tooltip {
+    color: gray !important;
+    border: 1px solid cornflowerblue !important;
+    background-color: white !important;
+    border-radius: 0px !important;
+}
+
+/* Ag grid custom tooltip */
+.custom-ag-grid-tooltip {
+    position: absolute !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 1s !important;
+    color: gray !important;
+    border: 1px solid cornflowerblue !important;
+    /* black? */
+    background-color: white !important;
+    border-radius: 0px !important;
+}
+
+.custom-ag-grid-tooltip p {
+    margin: 3px !important;
+    white-space: normal !important;
+}
+
+.custom-ag-grid-tooltip.ag-tooltip-hiding {
+    opacity: 0 !important;
+}
+
+/* Ag grid custom placefolder */
+.custom-ag-grid-placefolder-color {
+    color: gray !important;
+}
+
+/* Ag grid custom non default overlay */
+.custom-ag-grid-non-default-overlay {
+    color: gray !important;
+}
+
+/* Ag grid custom separate line */
+.custom-ag-grid-separate-line {
+    border-top: 2px solid black !important;
+}
+
+.custom-ag-grid-separate-line2 {
+    border-top: 1px solid black !important;
+}
+
+/* Ag grid custom multiple row ellipsis */
+.custom-ag-grid-multiple-row-ellipsis {
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+}
+
+/* Ag grid custom background color class */
+.custom-ag-grid-background-color-red {
+    background-color: red !important;
+}
+
+.custom-ag-grid-background-color-orange {
+    background-color: orange !important;
+}
+
+.custom-ag-grid-background-color-yellow {
+    background-color: yellow !important;
+}
+
+.custom-ag-grid-background-color-pink {
+    background-color: pink !important;
+}

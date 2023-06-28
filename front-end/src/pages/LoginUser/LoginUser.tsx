@@ -13,6 +13,7 @@ const LoginUser = () => {
     useEffect(() => {
         // 優先：フロントエンドデバッグ時にブレークポイントで停止しない原因を調べる
 
+        // デバッグ実行で動作はするが、停止しない
         const fetchData = async () => {
             try {
                 const response = await axios.get(findAllUrl);
@@ -50,7 +51,7 @@ const LoginUser = () => {
                 <div className="col-md-12">
                     <div className="row">
                         <div className="content-header text-start mt-1">
-                            <span className="m-1">(breadcrumb例) HOME {">"} LoginUser</span>
+                            <span>HOME {">"} LoginUser (breadcrumb例)</span>
                         </div>
                     </div>
                 </div>
@@ -72,7 +73,7 @@ const LoginUser = () => {
                         <button type="button" className="btn btn-info btn-sm">
                             新規登録
                         </button>
-                        <span className="m-1">メモ：gridのheightを自動計算する(grid高さ = スクリーン高さ - (header + content-header + content-footer) - 10)</span>
+                        <span className="m-1">メモ：grid高さ = スクリーン高さ - (header + content-header + content-footer) - 10)</span>
                     </div>
                 </div>
             </div>

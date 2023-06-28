@@ -1,0 +1,30 @@
+/* Ag grid custom horizon align header */
+.custom-ag-grid-horizon-align-header .ag-header-cell-label {
+    justify-content: center !important;
+}
+
+.custom-ag-grid-horizon-align-header {
+    justify-content: center !important;
+}
+
+/* Ag grid vertical header (Calendar grid header vertical) */
+.custom-ag-grid-vertical-top-header {
+    align-items: stretch !important;
+    /* white-space: pre-wrap !important; */
+}
+
+/*
+.custom-ag-grid-vertical-top-header {
+    writing-mode: vertical-lr !important;
+    text-align: left !important;
+}
+ */
+
+.custom-ag-grid-vertical-rotate-header {
+    padding: 0px !important;
+    text-orientation: sideways !important;
+    writing-mode: vertical-lr !important;
+    transform: rotate(180deg) !important;
+    justify-content: end;
+}
+

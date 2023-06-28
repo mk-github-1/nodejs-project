@@ -9,6 +9,10 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-balham.css";
 
+// css適用方法を調べる
+// import "./utils/css/custom-ag-grid.css";
+// import "./utils/css/custom-ag-grid-deader.css";
+
 /* これらは使用するページに記載する
 import axios from "axios";
 import Chart from "chart.js";
