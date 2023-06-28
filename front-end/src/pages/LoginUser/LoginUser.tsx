@@ -4,13 +4,14 @@ import axios from "axios";
 import { ColDef } from "ag-grid-community";
 
 const LoginUser = () => {
+    // (注意)パスのテスト、hostは実際には書かない
+    const findAllUrl = "http://localhost:5000/login-user";
+    // const findById = "/login-user/{account}";
+
     // コンポーネントがマウントされた時に実行されるコード
     // 第二引数の空配列[]は、依存関係がないことを示し、マウント時のみ実行することを意味します
     useEffect(() => {
         // 優先：フロントエンドデバッグ時にブレークポイントで停止しない原因を調べる
-
-        // (注意)パスのテスト、hostは実際には書かない
-        const findAllUrl = "http://localhost:5000/login-user";
 
         const fetchData = async () => {
             try {
@@ -71,7 +72,7 @@ const LoginUser = () => {
                         <button type="button" className="btn btn-info btn-sm">
                             新規登録
                         </button>
-                        <span className="m-1">メモ：gridのheightを自動計算する(高さ = スクリーン高さ - (header + content-header + content-footer) - 10(content分マージン))</span>
+                        <span className="m-1">メモ：gridのheightを自動計算する(grid高さ = スクリーン高さ - (header + content-header + content-footer) - 10)</span>
                     </div>
                 </div>
             </div>
