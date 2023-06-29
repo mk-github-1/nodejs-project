@@ -21,7 +21,7 @@ export class LoginUserController {
     async findAll(): Promise<Array<LoginUserDto>> {
         const loginUserModels: Array<LoginUserModel> = await this.loginUserService.findAll();
 
-        // Entity to Model マッピング
+        // Model to Dtoマッピング
         const loginUserDtos: Array<LoginUserDto> = loginUserModels.map((element) => {
             let loginUserDto: LoginUserDto = plainToClass(LoginUserDto, element, {
                 excludeExtraneousValues: true,

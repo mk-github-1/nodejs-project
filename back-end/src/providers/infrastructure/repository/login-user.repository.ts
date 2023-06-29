@@ -37,7 +37,7 @@ export class LoginUserRepository implements ILoginUserRepository {
                         excludeExtraneousValues: true,
                     });
 
-                    // 循環参照の回避
+                    // 循環参照の回避(不要？)
                     loginUserRoleModel.loginUserModel = undefined;
                     loginUserRoleModel.roleModel = undefined;
 
@@ -74,7 +74,7 @@ export class LoginUserRepository implements ILoginUserRepository {
                     excludeExtraneousValues: true,
                 });
 
-                // 循環参照の回避
+                // 循環参照の回避(不要？)
                 loginUserRoleModel.loginUserModel = undefined;
                 loginUserRoleModel.roleModel = undefined;
 
@@ -112,7 +112,7 @@ export class LoginUserRepository implements ILoginUserRepository {
         await this.loginUserRepository.delete(account);
     }
 
-    // LoginUserはsortしなくていい
+    // LoginUserは主キー順なのでsortしなくていい
     // 通常はArray<Record<number, number>>
     async sort(sortLists: Array<Record<string, number>>): Promise<void> {
         /*
