@@ -6,12 +6,18 @@
     "configurations": [
         {
             "name": "front-end-launch",
-            "type": "node",
+            "type": "chrome",
             "request": "launch",
             "cwd": "${workspaceFolder}/front-end",
             "runtimeExecutable": "npm",
-            "runtimeArgs": ["run", "start"],
-            "console": "integratedTerminal"
+            "runtimeArgs": ["run", "start"]
+            // "console": "integratedTerminal"
+            // "url": "http://localhost:3000",
+            // "webRoot": "${workspaceFolder}",
+            // "sourceMaps": true,
+            // "sourceMapPathOverrides": {
+            //     "webpack:///./*": "${webRoot}/src/*"
+            // }
         },
         {
             "name": "back-end-launch",
