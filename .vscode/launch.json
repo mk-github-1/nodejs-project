@@ -6,18 +6,17 @@
     "configurations": [
         {
             "name": "front-end-launch",
-            "type": "chrome",
+            "type": "node-terminal",
             "request": "launch",
             "cwd": "${workspaceFolder}/front-end",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": ["run", "start"]
-            // "console": "integratedTerminal"
-            // "url": "http://localhost:3000",
-            // "webRoot": "${workspaceFolder}",
-            // "sourceMaps": true,
-            // "sourceMapPathOverrides": {
-            //     "webpack:///./*": "${webRoot}/src/*"
-            // }
+            "command": "npm start"
+        },
+        {
+            "name": "front-end-debug",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}/front-end"
         },
         {
             "name": "back-end-launch",
@@ -36,7 +35,7 @@
     "compounds": [
         {
             "name": "compound-launch",
-            "configurations": ["front-end-launch", "back-end-launch"],
+            "configurations": ["front-end-launch", "front-end-debug", "back-end-launch"],
             "stopAll": true
         }
     ]
