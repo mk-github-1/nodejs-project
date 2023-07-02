@@ -21,8 +21,7 @@
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}/front-end",
-            "preLaunchTask": "delay"
+            "webRoot": "${workspaceFolder}/front-end"
         },
         {
             "name": "back-end-launch",
