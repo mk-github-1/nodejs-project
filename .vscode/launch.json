@@ -6,17 +6,23 @@
     "configurations": [
         {
             "name": "front-end-launch",
-            "type": "node-terminal",
+            "type": "node",
             "request": "launch",
             "cwd": "${workspaceFolder}/front-end",
-            "command": "npm start"
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["run", "start"],
+            "env": {
+                "BROWSER": "none"
+            },
+            "console": "integratedTerminal"
         },
         {
             "name": "front-end-debug",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}/front-end"
+            "webRoot": "${workspaceFolder}/front-end",
+            "preLaunchTask": "delay"
         },
         {
             "name": "back-end-launch",
@@ -28,8 +34,7 @@
             "env": {
                 "PORT": "5000"
             },
-            "console": "integratedTerminal",
-            "outputCapture": "std"
+            "console": "integratedTerminal"
         }
     ],
     "compounds": [
@@ -40,3 +45,17 @@
         }
     ]
 }
+
+/*
+// node-terminalで書くこともできる
+{
+    "name": "front-end-launch",
+    "type": "node-terminal",
+    "request": "launch",
+    "cwd": "${workspaceFolder}/front-end",
+    "command": "npm start",
+    "env": {
+        "BROWSER": "none"
+    }
+}
+*/
