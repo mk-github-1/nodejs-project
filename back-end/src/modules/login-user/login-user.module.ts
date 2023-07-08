@@ -15,17 +15,17 @@ import { ShareProviderModule } from '@/providers/share.provider.module';
 import { ConstantTokens } from '@/providers/domain-model/constant/ConstantTokens';
 
 @Module({
-    imports: [ShareProviderModule, TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole])],
-    controllers: [LoginUserController],
-    providers: [
-        {
-            provide: ConstantTokens.ILoginUserService,
-            useClass: LoginUserService,
-        },
-        {
-            provide: ConstantTokens.ILoginUserRepository,
-            useClass: LoginUserRepository,
-        },
-    ],
+  imports: [ShareProviderModule, TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole])],
+  controllers: [LoginUserController],
+  providers: [
+    {
+      provide: ConstantTokens.ILoginUserService,
+      useClass: LoginUserService,
+    },
+    {
+      provide: ConstantTokens.ILoginUserRepository,
+      useClass: LoginUserRepository,
+    },
+  ],
 })
 export class LoginUserModule {}

@@ -8,7 +8,7 @@ import { LoginUserModule } from './modules/login-user/login-user.module';
 // import { AppService } from './app.service';
 
 @Module({
-    imports: [TypeOrmModule.forRoot(databaseConfig), LoginUserModule],
-    controllers: [AppController],
+  imports: [TypeOrmModule.forRoot(databaseConfig), LoginUserModule],
+  controllers: [AppController],
 })
 export class AppModule {}

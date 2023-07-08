@@ -9,7 +9,7 @@ import LoginUserEdit from "./pages/LoginUser/loginUserEdit";
 
 function App() {
     return (
-        <div className="App d-flex flex-column overflow-hidden" style={{ background: "#f8f9fa", height: "100vh" }}>
+        <div className="App d-flex flex-column overflow-hidden" style={{ background: "#f8f9fa", height: "100%" }}>
             <Router>
                 {/* Header & Menu */}
                 <header>
@@ -21,8 +21,8 @@ function App() {
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-                            <div className="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                                <ul className="navbar-nav flex-grow-1">
+                            <div className="navbar-collapse collapse justify-content-between">
+                                <ul className="navbar-nav">
                                     <li className="nav-item">
                                         <Link className="nav-link text-dark" to="Index">
                                             Home
@@ -44,8 +44,8 @@ function App() {
                 </header>
 
                 {/* Contents */}
-                <div className="container flex-grow-1 d-flex flex-column">
-                    <main role="main" className="pb-3 flex-grow-1">
+                <div className="container d-flex flex-column" style={{ flex: "1 0 auto" }}>
+                    <main role="main" className="pb-3">
                         <div className="text-start">
                             <nav>
                                 <Link to="/">Homeへ画面遷移</Link>　|　

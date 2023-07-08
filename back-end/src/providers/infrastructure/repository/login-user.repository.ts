@@ -7,115 +7,116 @@ import { LoginUser } from '@/providers/domain-model/entity/LoginUser';
 import { LoginUserModel } from '@/providers/domain-model/model/LoginUserModel';
 import { LoginUserRoleModel } from '@/providers/domain-model/model/LoginUserRoleModel';
 import { ILoginUserRepository } from '@/providers/domain-service/i-repository/i-login-user.repository';
+import { LoginUserRole } from '@/providers/domain-model/entity/LoginUserRole';
 
 @Injectable()
 export class LoginUserRepository implements ILoginUserRepository {
-    constructor(
-        @InjectRepository(LoginUser)
-        private readonly loginUserRepository: Repository<LoginUser>,
-    ) {}
+  constructor(
+    @InjectRepository(LoginUser)
+    private readonly loginUserRepository: Repository<LoginUser>,
+  ) {}
 
-    async findAll(): Promise<Array<LoginUserModel>> {
-        // データ操作
-        const loginUsers: Array<LoginUser> = await this.loginUserRepository.find({
-            relations: ['loginUserRoles'],
-        });
+  async findAll(): Promise<Array<LoginUserModel>> {
+    // データ操作
+    const loginUsers: Array<LoginUser> = await this.loginUserRepository.find({
+      relations: ['loginUserRoles'],
+    });
 
-        // Entity to Model マッピング
-        const loginUsersModels: Array<LoginUserModel> = loginUsers.map((element) => {
-            let loginUserModel: LoginUserModel = plainToClass(LoginUserModel, element, {
-                excludeExtraneousValues: true,
-            });
+    // Entity to Model マッピング
+    const loginUsersModels: Array<LoginUserModel> = loginUsers.map((element) => {
+      let loginUserModel: LoginUserModel = plainToClass(LoginUserModel, element, {
+        excludeExtraneousValues: true,
+      });
 
-            if (element.loginUserRoles) {
-                loginUserModel.loginUserRoleModels = element.loginUserRoles.map((element2) => {
-                    // 循環参照の回避
-                    element2.loginUser = undefined;
-                    element2.role = undefined;
-
-                    const loginUserRoleModel: LoginUserRoleModel = plainToClass(LoginUserRoleModel, element2, {
-                        excludeExtraneousValues: true,
-                    });
-
-                    // 循環参照の回避(不要？)
-                    loginUserRoleModel.loginUserModel = undefined;
-                    loginUserRoleModel.roleModel = undefined;
-
-                    return loginUserRoleModel;
-                }, []);
-            }
-
-            return loginUserModel;
-        }, []);
-
-        return loginUsersModels;
-    }
-
-    // 通常は id: number
-    async findById(account: string): Promise<LoginUserModel> {
-        // データ操作
-        const loginUser: LoginUser = await this.loginUserRepository.findOne({
-            where: { account },
-            relations: ['loginUserRoles'],
-        });
-
-        // Entity to Model マッピング
-        let loginUserModel: LoginUserModel = plainToClass(LoginUserModel, loginUser, {
+      if (element.loginUserRoles) {
+        loginUserModel.loginUserRoleModels = element.loginUserRoles.map((element2) => {
+          const loginUserRoleModel: LoginUserRoleModel = plainToClass(LoginUserRoleModel, element2, {
             excludeExtraneousValues: true,
+          });
+
+          return loginUserRoleModel;
+        }, []);
+      }
+
+      return loginUserModel;
+    }, []);
+
+    return loginUsersModels;
+  }
+
+  // 通常は id: number
+  async findById(account: string): Promise<LoginUserModel> {
+    // データ操作
+    const loginUser: LoginUser = await this.loginUserRepository.findOne({
+      where: { account },
+      relations: ['loginUserRoles'],
+    });
+
+    // Entity to Model マッピング
+    let loginUserModel: LoginUserModel = plainToClass(LoginUserModel, loginUser, {
+      excludeExtraneousValues: true,
+    });
+
+    if (loginUser.loginUserRoles) {
+      loginUserModel.loginUserRoleModels = loginUser.loginUserRoles.map((element) => {
+        const loginUserRoleModel: LoginUserRoleModel = plainToClass(LoginUserRoleModel, element, {
+          excludeExtraneousValues: true,
         });
 
-        if (loginUser.loginUserRoles) {
-            loginUserModel.loginUserRoleModels = loginUser.loginUserRoles.map((element) => {
-                // 循環参照の回避
-                element.loginUser = undefined;
-                element.role = undefined;
-
-                const loginUserRoleModel: LoginUserRoleModel = plainToClass(LoginUserRoleModel, element, {
-                    excludeExtraneousValues: true,
-                });
-
-                // 循環参照の回避(不要？)
-                loginUserRoleModel.loginUserModel = undefined;
-                loginUserRoleModel.roleModel = undefined;
-
-                return loginUserRoleModel;
-            }, []);
-        }
-
-        return loginUserModel;
+        return loginUserRoleModel;
+      }, []);
     }
 
-    async create(loginUserModel: LoginUserModel): Promise<void> {
-        // Model to Entity マッピング
-        const loginUser: LoginUser = plainToClass(LoginUser, loginUserModel);
+    return loginUserModel;
+  }
 
-        // 関連Modelのマッピングが必要
-        // write code
+  async create(loginUserModel: LoginUserModel): Promise<void> {
+    // Model to Entity マッピング
+    let loginUser: LoginUser = plainToClass(LoginUser, loginUserModel);
 
-        // データ操作
-        await this.loginUserRepository.create(loginUser);
+    // 関連データのマッピング
+    if (loginUserModel.loginUserRoleModels) {
+      loginUser.loginUserRoles = loginUserModel.loginUserRoleModels.map((element) => {
+        const loginUserRole: LoginUserRole = plainToClass(LoginUserRole, element, {
+          excludeExtraneousValues: true,
+        });
+
+        return loginUserRole;
+      }, []);
     }
 
-    async update(account: string, loginUserModel: LoginUserModel): Promise<void> {
-        // Model to Entity マッピング
-        const loginUser: LoginUser = plainToClass(LoginUser, loginUserModel);
+    // データ操作
+    await this.loginUserRepository.create(loginUser);
+  }
 
-        // 関連Modelのマッピングが必要
-        // write code
+  async update(account: string, loginUserModel: LoginUserModel): Promise<void> {
+    // Model to Entity マッピング
+    let loginUser: LoginUser = plainToClass(LoginUser, loginUserModel);
 
-        // データ操作
-        await this.loginUserRepository.update(account, loginUserModel);
+    // 関連データのマッピング
+    if (loginUserModel.loginUserRoleModels) {
+      loginUser.loginUserRoles = loginUserModel.loginUserRoleModels.map((element) => {
+        const loginUserRole: LoginUserRole = plainToClass(LoginUserRole, element, {
+          excludeExtraneousValues: true,
+        });
+
+        return loginUserRole;
+      }, []);
     }
 
-    async delete(account: string): Promise<void> {
-        // データ操作
-        await this.loginUserRepository.delete(account);
-    }
+    // データ操作
+    await this.loginUserRepository.update(account, loginUserModel);
+  }
 
-    // LoginUserは主キー順なのでsortしなくていい
-    // 通常はArray<Record<number, number>>
-    async sort(sortLists: Array<Record<string, number>>): Promise<void> {
-        /*
+  async delete(account: string): Promise<void> {
+    // データ操作
+    await this.loginUserRepository.delete(account);
+  }
+
+  // LoginUserは主キー順なのでsortしなくていい
+  // 通常はArray<Record<number, number>>
+  async sort(sortLists: Array<Record<string, number>>): Promise<void> {
+    /*
         // SQLクエリの組立
         // 同じ順序がある時、更新日の新しいものを上にする、isDelete == trueは順序を後にする
         let query: string = `DECLARE @temp TABLE ( 
@@ -147,5 +148,5 @@ export class LoginUserRepository implements ILoginUserRepository {
         // データ操作
         await this.loginUserRepository.query(query);
         */
-    }
+  }
 }

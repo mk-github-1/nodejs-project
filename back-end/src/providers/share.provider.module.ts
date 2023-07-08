@@ -9,7 +9,7 @@ import { LoginUserRole } from '@/providers/domain-model/entity/LoginUserRole';
 import { LoginUserRepository } from '@/providers/infrastructure/repository/login-user.repository';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole])],
-    providers: [LoginUserRepository],
+  imports: [TypeOrmModule.forFeature([LoginUser, Role, LoginUserRole])],
+  providers: [LoginUserRepository],
 })
 export class ShareProviderModule {}

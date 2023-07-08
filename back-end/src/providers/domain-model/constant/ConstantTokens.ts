@@ -1,7 +1,7 @@
 export enum ConstantTokens {
-    // Service
-    ILoginUserService = 'ILoginUserService',
+  // Service
+  ILoginUserService = 'ILoginUserService',
 
-    // Repository
-    ILoginUserRepository = 'ILoginUserRepository',
+  // Repository
+  ILoginUserRepository = 'ILoginUserRepository',
 }
